@@ -1,0 +1,1034 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700;800&display=swap');
+
+/* ==========================================================================
+   DYNAMIC COLOR VARIABLES & THEMES
+   ========================================================================== */
+:root {
+    --bg-base: #070a12;
+    --card-bg: rgba(14, 21, 37, 0.6);
+    --border-color: rgba(0, 240, 255, 0.15);
+    --text-main: #e2e8f0;
+    --text-muted: #64748b;
+    --accent-active: #00F0FF;
+    --accent-secondary: #FF003C;
+    --accent-glow: rgba(0, 240, 255, 0.25);
+    --status-color: #00FF66;
+    
+    --sector-text: #00F0FF;
+    --sector-code: #00FF66;
+    --sector-media: #B800FF;
+}
+
+/* 1. Apprentice Theme (Tech-Forward Dark Mode) */
+body.theme-apprentice {
+    --bg-base: #0a0d14;
+    --card-bg: rgba(18, 25, 41, 0.7);
+    --border-color: rgba(0, 240, 255, 0.15);
+    --text-main: #e2e8f0;
+    --text-muted: #7a8a9e;
+    --accent-active: #00F0FF;
+    --accent-secondary: #FF003C;
+    --accent-glow: rgba(0, 240, 255, 0.25);
+}
+
+/* 2. Creator Theme (Cozy, Warm, Light Parchment Theme) */
+body.theme-creator {
+    --bg-base: #FAF6F0; /* Soft warm cream parchment */
+    --card-bg: #FFFFFF; /* Warm pure white cards */
+    --border-color: rgba(168, 85, 247, 0.18); /* Muted creative lavender borders */
+    --text-main: #2b333e; /* Deep charcoal for excellent reading contrast */
+    --text-muted: #6c7885; /* Medium slate gray */
+    --accent-active: #8B5CF6; /* High-contrast Creative Purple */
+    --accent-secondary: #E11D48; /* Coral Red accents */
+    --accent-glow: rgba(139, 92, 246, 0.15);
+    --status-color: #10B981;
+    
+    --sector-text: #2563EB; /* Royal Blue */
+    --sector-code: #059669; /* Emerald Green */
+    --sector-media: #7C3AED; /* Warm Violet */
+}
+
+/* 3. Committee Theme (Serious, Dark Blueprint Slate Mode) */
+body.theme-committee {
+    --bg-base: #070d19;
+    --card-bg: rgba(12, 22, 41, 0.85);
+    --border-color: rgba(245, 158, 11, 0.2);
+    --text-main: #e2e8f0;
+    --text-muted: #64748b;
+    --accent-active: #F59E0B; /* Technical Amber */
+    --accent-secondary: #10B981; /* Safety Emerald */
+    --accent-glow: rgba(245, 158, 11, 0.25);
+}
+
+/* ==========================================================================
+   GLOBAL UTILITIES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.theme-apprentice {
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.03), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 60, 0.03), transparent 30%);
+}
+
+body.theme-committee {
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.03), transparent 35%),
+        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.03), transparent 35%);
+}
+
+.mission-control-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* ==========================================================================
+   TOP CONTROL DECK
+   ========================================================================== */
+.control-deck {
+    height: 70px;
+    background: rgba(14, 20, 36, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 100;
+    transition: background 0.4s, border-color 0.4s;
+}
+
+/* Light mode control deck overrides */
+body.theme-creator .control-deck {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.brand-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-main);
+    transition: color 0.4s;
+}
+
+body.theme-creator .brand-title {
+    color: #1e293b;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--status-color);
+    box-shadow: 0 0 10px var(--status-color);
+    display: inline-block;
+    transition: background-color 0.4s;
+}
+
+/* ==========================================================================
+   3-WAY SEGMENTED CONTROL (THE LENS SWITCH)
+   ========================================================================== */
+.lens-segmented-control {
+    display: flex;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border-color);
+    padding: 3px;
+    border-radius: 30px;
+    position: relative;
+    gap: 4px;
+    transition: border-color 0.4s, background-color 0.4s;
+}
+
+body.theme-creator .lens-segmented-control {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(168, 85, 247, 0.2);
+}
+
+.lens-segmented-control input[type="radio"] {
+    display: none;
+}
+
+.lens-tab {
+    padding: 0.5rem 1.4rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body.theme-creator .lens-tab {
+    color: #4b5563;
+}
+
+.lens-tab:hover {
+    color: var(--text-main);
+}
+
+#lens-apprentice:checked ~ label[for="lens-apprentice"],
+#lens-creator:checked ~ label[for="lens-creator"],
+#lens-committee:checked ~ label[for="lens-committee"] {
+    color: #ffffff !important;
+    background: var(--accent-active);
+    box-shadow: 0 2px 10px var(--accent-glow);
+    text-shadow: 0 0 4px rgba(255,255,255,0.2);
+}
+
+/* ==========================================================================
+   STATUS HUD
+   ========================================================================== */
+.status-hud {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.hud-title {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.hud-value {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+body.theme-creator .hud-value {
+    color: #1e293b;
+}
+
+.text-glow {
+    color: var(--accent-active);
+    text-shadow: 0 0 10px var(--accent-glow);
+    transition: color 0.4s, text-shadow 0.4s;
+}
+
+/* HITL Checklist checkbox style */
+.hitl-checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    user-select: none;
+    gap: 0.4rem;
+}
+.hitl-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    height: 12px;
+    width: 12px;
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+}
+body.theme-creator .checkmark {
+    background-color: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.15);
+}
+.hitl-checkbox-container input:checked ~ .checkmark {
+    background-color: var(--accent-active);
+    border-color: var(--accent-active);
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.hitl-checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* ==========================================================================
+   WORKSPACE SYSTEMS & CARDS
+   ========================================================================== */
+.workspace-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.main-workspace {
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.workspace-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+    transition: background-color 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+
+body.theme-creator .workspace-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.workspace-card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+body.theme-creator .workspace-card:hover {
+    border-color: rgba(168, 85, 247, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+body.theme-creator .card-header {
+    border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.title-font {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    color: var(--text-main);
+}
+body.theme-creator .title-font {
+    color: #1e293b;
+}
+
+.icon {
+    margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+   3-WAY LENS TEXT/CONTENT TOGGLING
+   ========================================================================== */
+.lens-content {
+    display: none;
+    animation: fadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+body.theme-apprentice .apprentice-lens {
+    display: block !important;
+}
+
+body.theme-creator .creator-lens {
+    display: block !important;
+}
+
+body.theme-committee .committee-lens {
+    display: block !important;
+}
+
+/* Layout Visibility Filters per Lens */
+body.theme-apprentice .committee-only,
+body.theme-creator .committee-only {
+    display: none !important;
+}
+
+body.theme-committee .non-committee-only {
+    display: none !important;
+}
+
+body.theme-creator .hidden-in-creator {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   SHARED ASCENT TIMELINE
+   ========================================================================== */
+.shared-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+}
+
+.shared-timeline::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 15px;
+    bottom: 15px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-active), var(--accent-secondary));
+    z-index: 0;
+    transition: background 0.4s;
+}
+
+.timeline-node-card {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.node-badge {
+    min-width: 140px;
+    height: 32px;
+    background: rgba(8, 12, 24, 0.9);
+    border: 1px solid var(--accent-active);
+    color: var(--accent-active);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--accent-glow);
+    transition: all 0.4s;
+}
+
+body.theme-creator .node-badge {
+    background: #ffffff;
+    border-color: var(--accent-active);
+    color: var(--accent-active);
+    box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.node-content {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 1.2rem;
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: background-color 0.4s, border-color 0.4s;
+}
+
+body.theme-creator .node-content {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0,0,0,0.04);
+}
+
+.node-content:hover {
+    border-color: rgba(255,255,255,0.08);
+}
+body.theme-creator .node-content:hover {
+    border-color: rgba(168,85,247,0.15);
+}
+
+.node-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+body.theme-creator .node-content h3 {
+    color: #1e293b;
+}
+
+.node-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.tag-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.tech-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+.tag-cyan { background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.2); color: #00F0FF; }
+.tag-magenta { background: rgba(255, 0, 60, 0.08); border: 1px solid rgba(255, 0, 60, 0.2); color: #FF003C; }
+.tag-amber { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.2); color: #F59E0B; }
+
+/* ==========================================================================
+   INTERACTIVE VECTOR IOW MAP
+   ========================================================================== */
+.map-container {
+    height: 260px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.iow-map {
+    width: 100%;
+    height: 100%;
+}
+
+.island-outline {
+    fill: rgba(14, 21, 37, 0.6);
+    stroke: var(--border-color);
+    stroke-width: 1.5;
+    transition: stroke 0.4s ease;
+}
+
+.fiber-line {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-dasharray: 6 3;
+    animation: dash 30s linear infinite;
+}
+
+.island-loop {
+    stroke: rgba(0, 240, 255, 0.4);
+}
+.island-loop.active {
+    stroke: #00FF66 !important;
+    stroke-dasharray: 0;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.5));
+}
+
+.mainland-cable {
+    stroke: var(--accent-active);
+    filter: drop-shadow(0 0 4px var(--accent-glow));
+    transition: stroke 0.4s, filter 0.4s;
+}
+
+.mainland-cable.cut {
+    stroke: #FF003C !important;
+    animation-play-state: paused;
+    stroke-dasharray: 5 5;
+    filter: drop-shadow(0 0 3px rgba(255, 0, 60, 0.5));
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+.map-text {
+    font-family: 'Fira Code', monospace;
+    font-size: 8px;
+    fill: var(--text-muted);
+}
+.map-text.active-node {
+    fill: #fff;
+}
+
+.map-station circle {
+    fill: var(--accent-active);
+    transition: fill 0.4s;
+}
+
+.station-pulse {
+    fill: none !important;
+    stroke: var(--accent-active);
+    stroke-width: 1;
+    animation: pulseStation 2s infinite ease-out;
+}
+
+@keyframes pulseStation {
+    0% { transform: scale(0.5); opacity: 1; transform-origin: center; }
+    100% { transform: scale(2.2); opacity: 0; transform-origin: center; }
+}
+
+.pulse-node-cloud {
+    fill: var(--accent-active);
+    animation: pulseCloud 1.5s infinite ease-in-out alternate;
+}
+
+@keyframes pulseCloud {
+    from { r: 5; opacity: 0.7; }
+    to { r: 9; opacity: 1; }
+}
+
+.map-legend {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: 0.8rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+.active-loop { background: #00FF66; box-shadow: 0 0 5px #00FF66; }
+.cloud-loop { background: var(--accent-active); box-shadow: 0 0 5px var(--accent-glow); transition: background 0.4s; }
+
+/* MINI SWITCH (MAP CONTROL) */
+.switch-mini {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 20px;
+}
+.switch-mini input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider-mini {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: .4s;
+}
+.slider-mini:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff;
+    transition: .4s;
+}
+input:checked + .slider-mini {
+    background-color: #00FF66;
+}
+input:checked + .slider-mini:before {
+    transform: translateX(24px);
+}
+.slider-mini.round {
+    border-radius: 20px;
+}
+.slider-mini.round:before {
+    border-radius: 50%;
+}
+
+/* ==========================================================================
+   A2UI ADJACENCY MATRIX VIEW
+   ========================================================================== */
+.adjacency-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1.2fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.adjacency-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 0.8rem;
+}
+
+.adjacency-card.highlight-border {
+    border-color: var(--accent-active);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.matrix-coordinate {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.65rem;
+    color: var(--accent-active);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.adjacency-card h4 {
+    color: #fff;
+    margin-bottom: 0.3rem;
+}
+
+.matrix-desc {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.adjacency-arrow {
+    font-size: 1.5rem;
+    color: var(--accent-active);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ==========================================================================
+   SIDEBAR SYSTEMS & DYNAMICS
+   ========================================================================== */
+.audit-sidebar {
+    background: rgba(5, 8, 17, 0.95);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background-color 0.4s, border-color 0.4s;
+}
+
+body.theme-creator .audit-sidebar {
+    background: #FAF7F2;
+    border-left-color: rgba(168, 85, 247, 0.15);
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+body.theme-creator .sidebar-header {
+    border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.status-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notary-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-active);
+    animation: flashNotary 1s infinite alternate;
+}
+
+@keyframes flashNotary {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+.sidebar-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-main);
+}
+body.theme-creator .sidebar-title {
+    color: #1e293b;
+}
+
+.notary-sub {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
+}
+
+/* Sidebar A: Studio Notebook checklist card design */
+.checklist-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.02);
+    margin-bottom: 0.8rem;
+    transition: all 0.3s;
+}
+
+body.theme-creator .checklist-item {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0,0,0,0.04);
+}
+
+.check-icon {
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Active Completed task styling */
+.checklist-item.active-check {
+    border-color: rgba(16, 185, 129, 0.2);
+    background: rgba(16, 185, 129, 0.04);
+}
+.checklist-item.active-check .check-icon {
+    color: #10B981;
+    border-color: #10B981;
+}
+
+/* Muted pending task styling */
+.checklist-item.pending {
+    opacity: 0.75;
+}
+.checklist-item.pending .check-icon {
+    color: var(--text-muted);
+    border-color: var(--text-muted);
+}
+.checklist-item.pending strong {
+    color: var(--text-main);
+}
+body.theme-creator .checklist-item.pending strong {
+    color: #374151;
+}
+
+/* Sidebar B: Forensic Audit logs */
+.audit-log-container {
+    padding: 1.5rem;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    scroll-behavior: smooth;
+}
+
+.log-item {
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    padding-bottom: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    animation: slideInLog 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes slideInLog {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.log-time {
+    color: var(--text-muted);
+}
+
+.log-event {
+    color: var(--text-main);
+}
+
+.log-hash {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    word-break: break-all;
+}
+
+/* ==========================================================================
+   SYSTEM FOOTER
+   ========================================================================== */
+.system-footer {
+    height: 40px;
+    background: rgba(8, 12, 24, 0.95);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: background-color 0.4s, border-top-color 0.4s;
+}
+
+body.theme-creator .system-footer {
+    background: #F4EFEB;
+    border-top-color: rgba(168, 85, 247, 0.15);
+    color: #6c7885;
+}
+
+/* ==========================================================================
+   PREMIUM GRAPHICS AND CARD IMAGES
+   ========================================================================== */
+.card-asset {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+body.theme-creator .card-asset {
+    border-color: rgba(0, 0, 0, 0.03);
+}
+
+.timeline-node-card:hover .card-asset {
+    transform: scale(1.02);
+    border-color: var(--accent-active);
+}
+
+/* ELI5 FORENSIC LOG TRANSLATION LOGIC */
+.log-warm {
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.log-tech {
+    display: block;
+}
+
+body.eli5-active .log-tech,
+body.eli5-active .log-hash {
+    display: none !important;
+}
+
+body.eli5-active .log-warm {
+    display: block !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE SCALING
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .workspace-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow-y: auto;
+    }
+    .audit-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        height: 350px;
+    }
+    .mission-control-container {
+        height: auto;
+    }
+    .adjacency-grid {
+        grid-template-columns: 1fr;
+    }
+    .adjacency-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+}
+
+/* MULTI-AGENT PIPELINE FLOWCHART */
+.agent-flowchart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    transition: background-color 0.4s, border-color 0.4s;
+}
+
+body.theme-creator .agent-flowchart {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(168, 85, 247, 0.15);
+}
+
+.flow-step {
+    background: rgba(14, 21, 37, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 75px;
+    text-align: center;
+    transition: background-color 0.4s, border-color 0.4s;
+}
+
+body.theme-creator .flow-step {
+    background: #ffffff;
+    border-color: rgba(0,0,0,0.06);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.step-lbl {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--accent-active);
+}
+
+.step-val {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-top: 0.2rem;
+}
+body.theme-creator .step-val {
+    color: #374151;
+}
+
+.flow-arrow {
+    font-size: 0.9rem;
+    color: var(--accent-active);
+    opacity: 0.6;
+    animation: pulseArrow 1.5s infinite alternate;
+}
+
+@keyframes pulseArrow {
+    from { opacity: 0.3; transform: scale(0.9); }
+    to { opacity: 0.9; transform: scale(1.1); }
+}
+
+.highlight-step {
+    border-color: var(--accent-active);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+body.theme-creator .highlight-step {
+    border-color: var(--accent-active);
+    box-shadow: 0 2px 8px var(--accent-glow);
+}
+

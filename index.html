@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VectisONE AI Academy: Sovereign Industrial AI, Career Durability & Creative Studio for the Isle of Wight.">
+    <title>VectisONE // AI Academy & Sovereign Utility</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-apprentice">
+    <div class="mission-control-container">
+        
+        <!-- TOP CONTROL DECK -->
+        <header class="control-deck">
+            <div class="brand-block">
+                <span class="pulse-dot status-active"></span>
+                <span class="brand-title">VECTIS<strong style="color: var(--accent-active)">ONE</strong> // AI ACADEMY</span>
+            </div>
+            
+            <!-- 3-WAY AUDIENCE TOGGLE (THE LINGUISTIC LENS) -->
+            <div class="lens-segmented-control">
+                <input type="radio" id="lens-apprentice" name="lens-select" value="apprentice" checked>
+                <label for="lens-apprentice" class="lens-tab">🎓 Apprentice</label>
+                
+                <input type="radio" id="lens-creator" name="lens-select" value="creator">
+                <label for="lens-creator" class="lens-tab">🎨 Creator Studio</label>
+                
+                <input type="radio" id="lens-committee" name="lens-select" value="committee">
+                <label for="lens-committee" class="lens-tab">🏢 Committee</label>
+            </div>
+
+            <!-- STATUS HUD (Dynamic visibility based on Lens) -->
+            <div class="status-hud">
+                <!-- Visible in Committee View -->
+                <div class="hud-item ping-widget committee-only">
+                    <span class="hud-title">NODE-0 PING</span>
+                    <span class="hud-value" id="ping-value">1.2ms</span>
+                </div>
+                <div class="hud-item hardware-widget committee-only">
+                    <span class="hud-title">REFINERY SOURCE</span>
+                    <span class="hud-value text-glow" id="hardware-tag">LOCAL RTX 4090 NODE</span>
+                </div>
+                
+                <!-- Visible in Apprentice / Creator Views -->
+                <div class="hud-item campus-widget non-committee-only">
+                    <span class="hud-title">LOCATION</span>
+                    <span class="hud-value">RYDE FOYER & STUDIO</span>
+                </div>
+                <div class="hud-item hours-widget non-committee-only">
+                    <span class="hud-title">HOURS</span>
+                    <span class="hud-value">OPEN UNTIL 6:00 PM</span>
+                </div>
+
+                <!-- HITL Vigilance (Visible in Committee and Apprentice) -->
+                <div class="hud-item hitl-widget hidden-in-creator">
+                    <span class="hud-title">HITL VIGILANCE</span>
+                    <label class="hitl-checkbox-container">
+                        <input type="checkbox" id="hitl-signoff" checked>
+                        <span class="checkmark"></span>
+                        <span class="hitl-text">SECURE SIGN-OFF</span>
+                    </label>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN WORKSPACE -->
+        <div class="workspace-layout">
+            
+            <main class="main-workspace">
+                
+                <!-- SOVEREIGN DATA MAP & BIOSPHERE BLOCK (Committee view only) -->
+                <section class="workspace-card biosphere-section committee-only">
+                    <div class="card-header">
+                        <h2 class="title-font font-active"><span class="icon">🌍</span> BIOSPHERE SOVEREIGNTY NETWORK</h2>
+                        <div class="map-controls">
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">MAINLAND BYPASS</span>
+                            <label class="switch-mini">
+                                <input type="checkbox" id="mainland-bypass" checked>
+                                <span class="slider-mini round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <svg viewBox="0 0 500 350" class="iow-map">
+                            <defs>
+                                <pattern id="map-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#map-grid)" />
+                            
+                            <g class="mainland-node">
+                                <circle cx="250" cy="40" r="8" class="pulse-node-cloud" />
+                                <text x="250" y="25" text-anchor="middle" class="map-text">MAINLAND CLOUD</text>
+                            </g>
+
+                            <line x1="250" y1="40" x2="250" y2="120" class="fiber-line mainland-cable" id="mainland-link-line"/>
+                            <polygon points="120,200 250,110 380,200 310,270 190,270" class="island-outline" />
+                            <polygon points="250,120 370,200 300,260 200,260" class="fiber-line island-loop active" />
+
+                            <g class="map-station" id="station-cowes">
+                                <circle cx="250" cy="120" r="6" />
+                                <circle cx="250" cy="120" r="12" class="station-pulse" />
+                                <text x="250" y="105" text-anchor="middle" class="map-text active-node">NODE ZERO (COWES)</text>
+                            </g>
+
+                            <g class="map-station" id="station-seaview">
+                                <circle cx="370" cy="200" r="6" />
+                                <circle cx="370" cy="200" r="12" class="station-pulse" />
+                                <text x="385" y="204" text-anchor="start" class="map-text">ISABELLA CAMPUS</text>
+                            </g>
+
+                            <g class="map-station" id="station-bembridge">
+                                <circle cx="300" cy="260" r="6" />
+                                <circle cx="300" cy="260" r="12" class="station-pulse" />
+                                <text x="315" y="264" text-anchor="start" class="map-text">BEMBRIDGE FORT</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="map-legend">
+                        <div class="legend-item"><span class="legend-dot active-loop"></span> Island P2P Fiber Ring (Active)</div>
+                        <div class="legend-item"><span class="legend-dot cloud-loop" id="cloud-legend-dot"></span> Cloud Internet Bridge (Connected)</div>
+                    </div>
+                </section>
+
+                <!-- DUAL/TRIPLE LENS TIMELINE -->
+                <section class="workspace-card timeline-section">
+                    <div class="card-header">
+                        <h2 class="title-font font-active"><span class="icon">📈</span> VECTISONE // DUAL-LENS ASCENT</h2>
+                        <div class="lens-status">LENS: <span id="current-lens-display" class="lens-indicator">APPRENTICE</span></div>
+                    </div>
+
+                    <div class="shared-timeline">
+                                  <!-- STAGE 1: BASE -->
+                        <div class="timeline-node-card active" data-stage="1">
+                            <div class="node-badge">STAGE 01 // BASE</div>
+                            <div class="node-content">
+                                <!-- Apprentice & Creator view content -->
+                                <div class="lens-content apprentice-lens creator-lens">
+                                    <h3 class="title-font">Tokens as Atoms (From "Magic" to "Patterns")</h3>
+                                    <p>Demystify the "black box." You will learn that AI doesn’t "understand" English—it slices data into numerical fragments called <strong>tokens</strong>. You will learn to use pattern-prediction to feed mathematical patterns correctly, stopping "AI slop" and blind trust.</p>
+                                    <div style="background: rgba(0,0,0,0.1); border: 1px dashed var(--border-color); padding: 0.8rem; border-radius: 6px; margin-top: 0.8rem; font-size: 0.8rem;">
+                                        <strong>🔬 Local Sandbox:</strong> Type a sentence into our visual **Token Analyzer** and watch the Cowes local node slice it into color-coded probability chunks in real time.
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tech-tag tag-cyan">Demystifying AI</span>
+                                        <span class="tech-tag tag-magenta">Token Analyzer Sandbox</span>
+                                    </div>
+                                </div>
+                                <!-- Committee View content -->
+                                <div class="lens-content committee-lens">
+                                    <h3 class="title-font">Avoided Costs & Immediate ROI</h3>
+                                    <p>Close Ryde’s 23% productivity gap. Replace standard security/labor overruns with local automated systems. Estimated annual operational savings: <strong>£175,000</strong>.</p>
+                                    <div class="tag-row">
+                                        <span class="tech-tag tag-amber">£175k/Yr Avoided Cost</span>
+                                        <span class="tech-tag tag-amber">Regulatory Protection</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STAGE 2: MID -->
+                        <div class="timeline-node-card active" data-stage="2">
+                            <div class="node-badge">STAGE 02 // STRUCTURE</div>
+                            <div class="node-content">
+                                <!-- Apprentice & Creator View content -->
+                                <div class="lens-content apprentice-lens creator-lens">
+                                    <h3 class="title-font">Context Engineering (From "Asking" to "Providing")</h3>
+                                    <p style="margin-bottom: 0.8rem;">Avoid typical AI hallucinations. Learn the art of feeding secure, local context windows with highly specific, verified files rather than generic prompts.</p>
+                                    
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                        <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(168,85,247,0.08);">
+                                            <strong style="color: var(--sector-text); font-size: 0.9rem;">📝 The Research Assistant</strong>
+                                            <p style="font-size: 0.75rem; margin-top: 0.4rem; color: var(--text-muted);"><strong>The Real Tool:</strong> Secure offline Llama-3/Mistral models on Node-0. Sift 500 pages of 1940s logs in seconds to extract exact facts without leakage.</p>
+                                        </div>
+                                        <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(0,255,102,0.08);">
+                                            <strong style="color: var(--sector-code); font-size: 0.9rem;">⚡ The Digital Builder</strong>
+                                            <img src="assets/smart_maintenance.png" class="card-asset" style="height: 80px;" alt="Smart Maritime Code Maintenance">
+                                            <p style="font-size: 0.75rem; color: var(--text-muted);"><strong>The Real Tool:</strong> Cursor & A2UI visual components. Build interactive maps of Ryde or local business schedulers using conversational English.</p>
+                                        </div>
+                                        <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(184,0,255,0.08);">
+                                            <strong style="color: var(--sector-media); font-size: 0.9rem;">🥽 The Storyteller</strong>
+                                            <img src="assets/historical_tourism.png" class="card-asset" style="height: 80px;" alt="Historical tourism interactive radar room">
+                                            <p style="font-size: 0.75rem; color: var(--text-muted);"><strong>The Real Tool:</strong> Stable Diffusion/Whisper. Restore old photos and transcribe heritage audio into immersive Bembridge Fort displays.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Committee View content -->
+                                <div class="lens-content committee-lens">
+                                    <h3 class="title-font">The Physics of No (A2UI Safety)</h3>
+                                    <p>By enforcing Google's A2UI specification, we isolate inputs. The system generates static JSON logs instead of executing rogue runtime code, achieving <strong>Safe by Design</strong> data layers.</p>
+                                    <div class="tag-row">
+                                        <span class="tech-tag tag-amber">Deterministic A2UI</span>
+                                        <span class="tech-tag tag-amber">HSE Fine Prophylactic</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STAGE 3: PEAK -->
+                        <div class="timeline-node-card active" data-stage="3">
+                            <div class="node-badge">STAGE 03 // THE PEAK</div>
+                            <div class="node-content">
+                                <!-- Apprentice View content -->
+                                <div class="lens-content apprentice-lens">
+                                    <h3 class="title-font">Orchestrating Agents (From "Using" to "Managing")</h3>
+                                    <p style="margin-bottom: 0.8rem;">Move beyond standard chat interfaces. Learn to coordinate a multi-stage production pipeline using four specialized, collaborative local agents working in unison:</p>
+                                    <div style="background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); padding: 1rem; border-radius: 6px; margin-bottom: 0.8rem; font-size: 0.8rem;">
+                                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; color: var(--text-muted);">
+                                            <li>🔍 <strong>Agent A (The Researcher):</strong> Local scanner extracts precise, historical solent data.</li>
+                                            <li>✍️ <strong>Agent B (The Writer):</strong> Drafts script copies for audio heritage guides.</li>
+                                            <li>🛡️ <strong>Agent C (The Auditor):</strong> Reviews script facts against geographical maps.</li>
+                                            <li>💻 <strong>Agent D (The Developer):</strong> Packages the approved assets into interactive web maps.</li>
+                                        </ul>
+                                    <div class="agent-flowchart">
+                                        <div class="flow-step">
+                                            <span class="step-lbl">DATA SOURCE</span>
+                                            <span class="step-val">Solent Archives</span>
+                                        </div>
+                                        <div class="flow-arrow">➔</div>
+                                        <div class="flow-step">
+                                            <span class="step-lbl">AGENT A</span>
+                                            <span class="step-val">Researcher</span>
+                                        </div>
+                                        <div class="flow-arrow">➔</div>
+                                        <div class="flow-step">
+                                            <span class="step-lbl">AGENT B</span>
+                                            <span class="step-val">Writer</span>
+                                        </div>
+                                        <div class="flow-arrow">➔</div>
+                                        <div class="flow-step">
+                                            <span class="step-lbl">AGENT C</span>
+                                            <span class="step-val">Auditor</span>
+                                        </div>
+                                        <div class="flow-arrow">➔</div>
+                                        <div class="flow-step">
+                                            <span class="step-lbl">AGENT D</span>
+                                            <span class="step-val">Developer</span>
+                                        </div>
+                                        <div class="flow-arrow">➔</div>
+                                        <div class="flow-step highlight-step">
+                                            <span class="step-lbl">OUTPUT</span>
+                                            <span class="step-val">Live Deploy</span>
+                                        </div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tech-tag tag-cyan">Agent Pipelines</span>
+                                        <span class="tech-tag tag-magenta">Micro-Agency Leverage</span>
+                                    </div>
+                                </div>
+                                <!-- Creator/Studio View content -->
+                                <div class="lens-content creator-lens">
+                                    <h3 class="title-font">The Community Foyer & Studio</h3>
+                                    
+                                    <div class="welcome-box" style="background: rgba(168,85,247,0.05); border-left: 4px solid var(--accent-active); padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                                        <p style="font-size: 0.95rem; color: var(--text-main);"><strong>🎨 Welcome! No coding experience needed.</strong> Grab a hot tea, sit down, and let's bring your ideas to life. If you can talk and tell a story, you can build with AI.</p>
+                                    </div>
+
+                                    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                                        <div>
+                                            <h4 style="margin-bottom: 0.5rem;"><span class="icon">✨</span> Collaborative Projects Running Today:</h4>
+                                            <ul style="list-style: none; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+                                                <li>🔨 <strong>Jack:</strong> Rendering a 3D model of Appley Tower.</li>
+                                                <li>🎙️ <strong>Sarah:</strong> Editing an oral history audio track from Bembridge Fort.</li>
+                                                <li>☕ <strong>Pop-in:</strong> Foyer space is warm and open for drop-ins until 6:00 PM.</li>
+                                            </ul>
+                                            <h4 style="margin-top: 1rem; margin-bottom: 0.5rem;"><span class="icon">🤝</span> Taste & Truth:</h4>
+                                            <p style="font-size: 0.8rem; color: var(--text-muted);">You provide the local context and the design taste. We help teach you how to manage the algorithms so your outputs are authentic, rich, and free of "AI slop."</p>
+                                        </div>
+                                        <div>
+                                            <img src="assets/ryde_studio.png" class="card-asset" style="height: 100%; min-height: 180px; margin: 0;" alt="Warm creative Ryde studio space">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Committee View content -->
+                                <div class="lens-content committee-lens">
+                                    <h3 class="title-font">Asset-Based Value & Deep Social Capital</h3>
+                                    <p style="margin-bottom: 0.8rem;">Secure studio funding via Capacity/Programme Delivery tranches (£100k-£300k). Prove community value: <strong>£1 invested yields £3 in verified social capital and mental wellbeing</strong>.</p>
+                                    <img src="assets/integrity_seal.png" class="card-asset" style="height: 180px;" alt="Data Integrity Cryptographic Seal">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- VOCATIONAL CAREER OUTCOMES (Visible in Apprentice / Creator / Committee with appropriate lens text) -->
+                <section class="workspace-card outcomes-section">
+                    <div class="card-header">
+                        <h2 class="title-font font-active"><span class="icon">💼</span> SUSTAINABLE ISLAND CAREERS</h2>
+                        <span class="tech-tag tag-cyan apprentice-lens creator-lens" style="animation: fadeIn 0.4s ease forwards;">PORTFOLIO-BACKED PLACEMENT</span>
+                        <span class="tech-tag tag-amber committee-lens" style="animation: fadeIn 0.4s ease forwards;">LOCAL CAPITAL MULTIPLICATION</span>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                        
+                        <!-- Job Role A -->
+                        <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <span class="matrix-coordinate">[ROLE A // CREATIVE CONTENT]</span>
+                                <!-- Apprentice/Creator Lens -->
+                                <div class="lens-content apprentice-lens creator-lens">
+                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Digital Content & Accessibility Assistant</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Use AI for Text and Media to draft accessible, optimized web copy, transcribe records, and manage public digital channels with safe human-in-the-loop compliance.</p>
+                                </div>
+                                <!-- Committee Lens -->
+                                <div class="lens-content committee-lens">
+                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Administrative Fee Avoidance</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Transition costly external design and accessibility contracts to high-speed local apprentices. Keeps compliance checks 100% compliant with public standards.</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
+                                <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£18,000 - £25,000 / Yr</strong>
+                                <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">Saves £30k+ per Dept</strong>
+                            </div>
+                        </div>
+
+                        <!-- Job Role B -->
+                        <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <span class="matrix-coordinate">[ROLE B // MARKETING SEGMENT]</span>
+                                <!-- Apprentice/Creator Lens -->
+                                <div class="lens-content apprentice-lens creator-lens">
+                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Digital Marketing & Brand Assistant</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Write engaging content, design campaign graphics, and update marketing layouts at 3x the speed using localized Llama and Stable Diffusion tools.</p>
+                                </div>
+                                <!-- Committee Lens -->
+                                <div class="lens-content committee-lens">
+                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">High-Productivity Local Apprentices</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Direct alignment with WightFibre marketing placement tracks. Halves onboarding times and multiplies junior worker output by 300% via Node-0 workflows.</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
+                                <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£17,500 - £24,000 / Yr</strong>
+                                <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">3x On-Island Work Output</strong>
+                            </div>
+                        </div>
+
+                        <!-- Job Role C -->
+                        <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <span class="matrix-coordinate">[ROLE C // LOCAL MICRO-AGENCY]</span>
+                                <!-- Apprentice/Creator Lens -->
+                                <div class="lens-content apprentice-lens creator-lens">
+                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Sovereign Local Agency Partner</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Act as a local micro-agency to build web tools, interactive Solent maps, and booking portals for Bed & Breakfasts, charters, and heritage sites.</p>
+                                </div>
+                                <!-- Committee Lens -->
+                                <div class="lens-content committee-lens">
+                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">On-Island Capital Retention</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Eliminates standard capital drain to expensive mainland London design firms. Keeps cash flows circulating in Ryde, Cowes, and Bembridge.</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
+                                <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£25,000 - £35,000+ / Yr</strong>
+                                <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">0% Mainland Leakage</strong>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-style: italic; font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5;" class="committee-only">
+                        "Our curriculum is designed to support the <strong>Isle of Wight Education Strategy 2024 to 2030</strong>. We aren't teaching theory. In Stage 1, they learn how the engines work so they aren't fooled by them. In Stage 2, they use our local hardware to parse real local historical data, training them in the exact information-management skills that Island employers and the Council are looking for. And in Stage 3, they learn how to orchestrate these tools to build actual products—meaning they leave our studio not just with a certificate, but with a portfolio of live websites, restored media, and digital systems that local Island businesses actually need."
+                    </div>
+                </section>
+
+                <!-- THE PHYSICS OF NO: A2UI SECURITY SCHEMA (COMMITTEE VIEW ONLY) -->
+                <section class="workspace-card security-section committee-only">
+                    <div class="card-header">
+                        <h2 class="title-font font-active"><span class="icon">🛡️</span> THE PHYSICS OF NO // A2UI ADJACENCY MATRIX</h2>
+                        <span class="security-status text-glow">SAFE BY DESIGN DETERMINISM</span>
+                    </div>
+                    <div class="adjacency-grid">
+                        <div class="adjacency-card">
+                            <span class="matrix-coordinate">[INPUT: USER INTENT]</span>
+                            <h4>Dynamic Natural Language</h4>
+                            <p class="matrix-desc">"Interrogate Bembridge Fort radar log for Aug 1940"</p>
+                        </div>
+                        <div class="adjacency-arrow">➔</div>
+                        <div class="adjacency-card highlight-border">
+                            <span class="matrix-coordinate">[GATE: A2UI PARSER]</span>
+                            <h4>Adjacency List Mapping</h4>
+                            <p class="matrix-desc">Bypasses code execution. Maps intent strictly to pre-approved JSON layout schemas.</p>
+                        </div>
+                        <div class="adjacency-arrow">➔</div>
+                        <div class="adjacency-card">
+                            <span class="matrix-coordinate">[OUTPUT: SECURE UI]</span>
+                            <h4>React Stage Assembly</h4>
+                            <p class="matrix-desc">Renders isolated visual components with zero security risks.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- SIDEBARS SYSTEM (Swaps completely based on active Lens) -->
+            
+            <!-- SIDEBAR A: THE STUDIO WORKSPACE NOTEBOOK (Visible in Apprentice / Creator Lenses) -->
+            <aside class="audit-sidebar studio-notebook-sidebar non-committee-only">
+                <div class="sidebar-header">
+                    <div class="status-block">
+                        <span class="notary-dot" style="background: var(--accent-active); box-shadow: 0 0 8px var(--accent-active)"></span>
+                        <span class="sidebar-title">MY STUDIO NOTEBOOK</span>
+                    </div>
+                    <div class="notary-sub">TODAY'S CREATIVE MILESTONES</div>
+                </div>
+                
+                <div class="notebook-content-area" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                    
+                    <!-- Apprentice Specific Milestones -->
+                    <div class="apprentice-only" style="animation: fadeIn 0.4s ease forwards;">
+                        <h4 style="margin-bottom: 0.8rem; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-main);">📚 MY LEARNING PATHWAY</h4>
+                        <div class="checklist-item active-check">
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>Tokens as Atoms</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Learn how models see words as pattern fragments.</p>
+                            </div>
+                        </div>
+                        <div class="checklist-item">
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>Context Engineering</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Supply complete archives to million-token canvas windows.</p>
+                            </div>
+                        </div>
+                        <div class="checklist-item pending">
+                            <span class="check-icon">○</span>
+                            <div>
+                                <strong>Orchestrating Agents</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Manage your team of digital junior teammates.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Creator Specific Workspace Tasks -->
+                    <div class="creator-only" style="animation: fadeIn 0.4s ease forwards;">
+                        <h4 style="margin-bottom: 0.8rem; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-main);">🎨 TODAY'S CREATIVE CHECKLIST</h4>
+                        <div class="checklist-item active-check">
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>Appley Tower Project</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Pick up physical research archives & Solent historical map frames.</p>
+                            </div>
+                        </div>
+                        <div class="checklist-item pending">
+                            <span class="check-icon">○</span>
+                            <div>
+                                <strong>Fort Oral History Edit</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Record/edit the sound track with veterans in the sound booth.</p>
+                            </div>
+                        </div>
+                        <div class="checklist-item pending">
+                            <span class="check-icon">○</span>
+                            <div>
+                                <strong>Interactive Tourism Map</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Upload regional assets and verify that no "AI slop" generates.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.08); border-radius: 6px; padding: 1rem; margin-top: 1rem;">
+                        <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.3rem;">💡 Creator Workspace Tip</span>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">Click any stage card on the timeline to log your current milestone or access active design tools.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- SIDEBAR B: THE INDUSTRIAL FORENSIC NOTARY (Visible exclusively in Committee Lens) -->
+            <aside class="audit-sidebar forensic-notary-sidebar committee-only">
+                <div class="sidebar-header">
+                    <div class="sidebar-top-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                        <div class="status-block">
+                            <span class="notary-dot"></span>
+                            <span class="sidebar-title">JULIAN SEAL // NOTARY</span>
+                        </div>
+                        <!-- PLAIN ENGLISH LOG TOGGLE -->
+                        <div class="eli5-toggle-deck" style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span class="eli5-label" style="font-size: 0.65rem; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px;">PLAIN ENGLISH</span>
+                            <label class="switch-mini">
+                                <input type="checkbox" id="eli5-toggle">
+                                <span class="slider-mini round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="notary-sub font-active">VERIFIABLE HARDWARE RECEIPTS</div>
+                </div>
+                
+                <div class="audit-log-container" id="audit-log-stream">
+                    <!-- Initial seed logs with BOTH Tech and ELI5 English classes -->
+                    <div class="log-item">
+                        <span class="log-time">[20:44:12]</span>
+                        <span class="log-tech text-cyan">SYSTEM INITIALIZED</span>
+                        <span class="log-warm" style="color: #00F0FF;">System Online: Welcome to VectisONE AI Academy!</span>
+                        <span class="log-hash">SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+                    </div>
+                    <div class="log-item">
+                        <span class="log-time">[20:44:13]</span>
+                        <span class="log-tech">STATION_COWES: ONLINE // REFreflex_loop: 1.2ms</span>
+                        <span class="log-warm">Cowes Node Live: Local processing engine online.</span>
+                        <span class="log-hash">SHA256: 4fc3d32ef39d89bb90f772418e285d8efcd63668a442ff09a341f23789abdc02</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- FOOTER BAR (Dynamic styling per Lens) -->
+        <footer class="system-footer">
+            <div class="footer-left">
+                VECTISONE CO-OPERATIVE UTILITY // STEWARD-OWNED PLATFORM
+            </div>
+            
+            <div class="footer-right text-glow committee-only">
+                DISPLAY ENGINE POWERED BY LOCAL NODE-0 GPU (RTX 4090 / DGX SPARK) // HARDWARE-ACCELERATED
+            </div>
+            <div class="footer-right non-committee-only" style="color: var(--text-muted); font-size: 0.75rem;">
+                RYDE PRIDE IN PLACE PARTNERSHIP // POWERED BY BEMBRIDGE COMMUNITY COOPERATIVE
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
