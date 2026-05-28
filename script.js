@@ -401,16 +401,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImg = document.getElementById('modal-img');
     const captionText = document.getElementById('modal-caption');
     const closeBtn = document.querySelector('.modal-close-btn');
-    const triggerBtns = document.querySelectorAll('.infographic-trigger-btn');
+    const thumbnailWrappers = document.querySelectorAll('.infographic-thumbnail-wrapper');
     
-    if (triggerBtns.length > 0 && modal && modalImg) {
-        triggerBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
+    if (thumbnailWrappers.length > 0 && modal && modalImg) {
+        thumbnailWrappers.forEach(wrapper => {
+            wrapper.addEventListener('click', (e) => {
                 e.stopPropagation(); // Prevent step active speech focus changes
-                const imgSrc = btn.getAttribute('data-img');
-                const caption = btn.getAttribute('data-caption');
+                const imgSrc = wrapper.getAttribute('data-img');
+                const caption = wrapper.getAttribute('data-caption');
                 
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
                 modalImg.src = imgSrc;
                 if (captionText) captionText.textContent = caption;
                 
@@ -421,14 +421,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (modal) {
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 modal.style.display = 'none';
+                logForensicReceipt(`INFOGRAPHIC_VIEW: Closed fullscreen overlay`, 'INFO');
             });
         }
-        modal.addEventListener('click', (e) => {
-            if (e.target !== modalImg) {
-                modal.style.display = 'none';
-            }
+        // Clicking anywhere inside the modal (overlay or image itself) closes it
+        modal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            logForensicReceipt(`INFOGRAPHIC_VIEW: Minimised fullscreen overlay`, 'INFO');
         });
     }
 

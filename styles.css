@@ -1534,84 +1534,149 @@ body.theme-creator .edge-absolute-card {
 /* ==========================================================================
    FULLSCREEN INFOGRAPHIC MODAL SYSTEM
    ========================================================================== */
-.infographic-trigger-btn {
-    display: inline-flex;
+/* Compact Premium Infographic Thumbnail Cards */
+.infographic-thumbnail-wrapper {
+    display: block;
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    height: 160px;
+    margin: 1rem 0 0.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: rgba(4, 7, 13, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body.theme-creator .infographic-thumbnail-wrapper {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(168, 85, 247, 0.15);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.02);
+}
+
+.infographic-thumbnail-wrapper:hover {
+    transform: translateY(-2px) scale(1.02);
+    border-color: var(--accent-active);
+    box-shadow: 0 0 18px var(--accent-glow);
+}
+
+.infographic-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    opacity: 0.82;
+    display: block;
+}
+
+.infographic-thumbnail-wrapper:hover .infographic-thumbnail {
+    transform: scale(1.04);
+    opacity: 1.0;
+}
+
+/* Beautiful overlay with gradient and titles */
+.thumbnail-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    background: linear-gradient(to top, rgba(7, 10, 18, 0.96) 30%, rgba(7, 10, 18, 0.6) 75%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+}
+
+body.theme-creator .thumbnail-overlay {
+    background: linear-gradient(to top, rgba(250, 246, 240, 0.98) 35%, rgba(250, 246, 240, 0.7) 75%, transparent 100%);
+}
+
+.thumbnail-overlay-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
-    color: var(--text-main) !important;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
-    margin-left: 12px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    vertical-align: middle;
+    width: 100%;
+    justify-content: space-between;
 }
 
-body.theme-creator .infographic-trigger-btn {
-    background: rgba(0, 0, 0, 0.03);
-    border-color: rgba(168, 85, 247, 0.15);
+body.theme-creator .thumbnail-overlay-label {
+    color: #1e293b;
 }
 
-.infographic-trigger-btn:hover {
-    background: var(--accent-active);
-    color: #ffffff !important;
-    border-color: var(--accent-active);
-    box-shadow: 0 0 12px var(--accent-glow);
-    transform: translateY(-1.5px);
-}
-
-.infographic-icon-img {
-    width: 16px;
-    height: 16px;
-    object-fit: cover;
-    border-radius: 3px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.thumbnail-overlay-label::after {
+    content: "🔎 EXPAND";
+    font-size: 0.6rem;
+    color: var(--accent-active);
+    border: 1px solid var(--accent-active);
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+    transition: all 0.3s ease;
     background: rgba(0, 0, 0, 0.2);
 }
 
-body.theme-creator .infographic-icon-img {
-    border-color: rgba(0, 0, 0, 0.05);
+body.theme-creator .thumbnail-overlay-label::after {
+    background: rgba(255, 255, 255, 0.8);
 }
 
-/* Modal Overlay base */
+.infographic-thumbnail-wrapper:hover .thumbnail-overlay-label::after {
+    background: var(--accent-active);
+    color: #ffffff !important;
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Modal Overlay base (centered flex layout) */
 .infographic-modal-overlay {
-    display: none;
+    display: none; /* Flex when toggled active */
     position: fixed;
     z-index: 10000;
-    padding-top: 40px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(4, 7, 13, 0.96);
-    backdrop-filter: blur(12px);
+    overflow: hidden;
+    background-color: rgba(4, 7, 13, 0.97);
+    backdrop-filter: blur(16px);
     transition: all 0.35s ease;
+    cursor: zoom-out; /* Indicate click anywhere to minimise */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
 }
 
 body.theme-creator .infographic-modal-overlay {
-    background-color: rgba(250, 246, 240, 0.96);
+    background-color: rgba(250, 246, 240, 0.97);
 }
 
 /* Modal Content Image */
 .modal-content {
-    margin: auto;
+    margin: 0 auto;
     display: block;
-    max-width: 90%;
-    max-height: 82vh;
-    border-radius: 10px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+    max-width: 92%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 35px var(--accent-glow);
     border: 1px solid var(--border-color);
     animation: zoomInModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: zoom-out;
 }
 
 body.theme-creator .modal-content {
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.05);
+    box-shadow: 0 25px 50px rgba(139, 92, 246, 0.08), 0 0 25px rgba(139, 92, 246, 0.05);
 }
 
 @keyframes zoomInModal {
@@ -1622,33 +1687,35 @@ body.theme-creator .modal-content {
 /* Close Button */
 .modal-close-btn {
     position: absolute;
-    top: 20px;
-    right: 35px;
+    top: 25px;
+    right: 40px;
     color: var(--text-muted);
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 44px;
+    font-weight: 300;
     cursor: pointer;
     transition: color 0.3s, transform 0.3s;
+    line-height: 1;
+    z-index: 10100;
 }
 
 .modal-close-btn:hover {
     color: var(--accent-active);
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(90deg);
 }
 
 /* Modal Caption text */
 #modal-caption {
-    margin: auto;
+    margin-top: 1.5rem;
     display: block;
     width: 80%;
     max-width: 700px;
     text-align: center;
     color: var(--text-main);
-    padding: 20px 0;
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    font-size: 1.15rem;
-    letter-spacing: 0.5px;
+    font-size: 1.2rem;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
 }
 
 
