@@ -396,6 +396,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Infographic Fullscreen Modal logic
+    const modal = document.getElementById('infographic-modal');
+    const modalImg = document.getElementById('modal-img');
+    const captionText = document.getElementById('modal-caption');
+    const closeBtn = document.querySelector('.modal-close-btn');
+    const triggerBtns = document.querySelectorAll('.infographic-trigger-btn');
+    
+    if (triggerBtns.length > 0 && modal && modalImg) {
+        triggerBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent step active speech focus changes
+                const imgSrc = btn.getAttribute('data-img');
+                const caption = btn.getAttribute('data-caption');
+                
+                modal.style.display = 'block';
+                modalImg.src = imgSrc;
+                if (captionText) captionText.textContent = caption;
+                
+                logForensicReceipt(`INFOGRAPHIC_VIEW: Opened "${caption}" fullscreen overlay`, 'INFO');
+            });
+        });
+    }
+    
+    if (modal) {
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+
     // Generate periodic synthetic security audits in background
     setInterval(() => {
         const triggers = [
