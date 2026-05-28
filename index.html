@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VectisONE AI Academy: Sovereign Industrial AI, Career Durability & Creative Studio for the Isle of Wight.">
-    <title>VectisONE // AI Academy & Sovereign Utility</title>
+    <meta name="description" content="VectisONE AI Academy: Sovereign Physical AI Systems & Civic Trust Infrastructure for Ryde & Isle of Wight.">
+    <title>VectisONE // Ryde AI Academy & Civic Trust</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="theme-apprentice">
+<body class="theme-apprentice active-tab-civic">
     <div class="mission-control-container">
         
         <!-- TOP CONTROL DECK -->
         <header class="control-deck">
             <div class="brand-block">
                 <span class="pulse-dot status-active"></span>
-                <span class="brand-title">VECTIS<strong style="color: var(--accent-active)">ONE</strong> // AI ACADEMY</span>
+                <span class="brand-title">VECTIS<strong style="color: var(--accent-active)">ONE</strong> // RYDE CIVIC TRUST</span>
             </div>
+
+            <!-- SPA TAB NAVIGATION -->
+            <nav class="spa-nav">
+                <button class="nav-tab active" id="tab-btn-civic" data-tab="civic">🏛️ Town Council Portal</button>
+                <button class="nav-tab" id="tab-btn-control" data-tab="control">📊 Sovereign Mission Control</button>
+                <button class="nav-tab" id="tab-btn-script" data-tab="script">🎙️ Tonight's Council Script</button>
+            </nav>
             
             <!-- 3-WAY AUDIENCE TOGGLE (THE LINGUISTIC LENS) -->
             <div class="lens-segmented-control">
@@ -31,7 +38,6 @@
 
             <!-- STATUS HUD (Dynamic visibility based on Lens) -->
             <div class="status-hud">
-                <!-- Visible in Committee View -->
                 <div class="hud-item ping-widget committee-only">
                     <span class="hud-title">NODE-0 PING</span>
                     <span class="hud-value" id="ping-value">1.2ms</span>
@@ -41,17 +47,15 @@
                     <span class="hud-value text-glow" id="hardware-tag">LOCAL RTX 4090 NODE</span>
                 </div>
                 
-                <!-- Visible in Apprentice / Creator Views -->
                 <div class="hud-item campus-widget non-committee-only">
-                    <span class="hud-title">LOCATION</span>
-                    <span class="hud-value">RYDE FOYER & STUDIO</span>
+                    <span class="hud-title">ACTIVE CELL</span>
+                    <span class="hud-value">RYDE FOYER & VAULT</span>
                 </div>
                 <div class="hud-item hours-widget non-committee-only">
-                    <span class="hud-title">HOURS</span>
-                    <span class="hud-value">OPEN UNTIL 6:00 PM</span>
+                    <span class="hud-title">STATUS</span>
+                    <span class="hud-value text-glow" style="color: var(--accent-active);">PITCH READY</span>
                 </div>
 
-                <!-- HITL Vigilance (Visible in Committee and Apprentice) -->
                 <div class="hud-item hitl-widget hidden-in-creator">
                     <span class="hud-title">HITL VIGILANCE</span>
                     <label class="hitl-checkbox-container">
@@ -66,338 +70,594 @@
         <!-- MAIN WORKSPACE -->
         <div class="workspace-layout">
             
+            <!-- MAIN DISPLAY PORT -->
             <main class="main-workspace">
                 
-                <!-- SOVEREIGN DATA MAP & BIOSPHERE BLOCK (Committee view only) -->
-                <section class="workspace-card biosphere-section committee-only">
-                    <div class="card-header">
-                        <h2 class="title-font font-active"><span class="icon">🌍</span> BIOSPHERE SOVEREIGNTY NETWORK</h2>
-                        <div class="map-controls">
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">MAINLAND BYPASS</span>
-                            <label class="switch-mini">
-                                <input type="checkbox" id="mainland-bypass" checked>
-                                <span class="slider-mini round"></span>
-                            </label>
-                        </div>
-                    </div>
+                <!-- ==========================================================================
+                     TAB 1: CIVIC TRUST LANDING (RYDE TOWN COUNCIL PITCH)
+                     ========================================================================== -->
+                <div class="tab-viewport civic-viewport active">
                     
-                    <div class="map-container">
-                        <svg viewBox="0 0 500 350" class="iow-map">
-                            <defs>
-                                <pattern id="map-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-                                </pattern>
-                            </defs>
-                            <rect width="100%" height="100%" fill="url(#map-grid)" />
-                            
-                            <g class="mainland-node">
-                                <circle cx="250" cy="40" r="8" class="pulse-node-cloud" />
-                                <text x="250" y="25" text-anchor="middle" class="map-text">MAINLAND CLOUD</text>
-                            </g>
-
-                            <line x1="250" y1="40" x2="250" y2="120" class="fiber-line mainland-cable" id="mainland-link-line"/>
-                            <polygon points="120,200 250,110 380,200 310,270 190,270" class="island-outline" />
-                            <polygon points="250,120 370,200 300,260 200,260" class="fiber-line island-loop active" />
-
-                            <g class="map-station" id="station-cowes">
-                                <circle cx="250" cy="120" r="6" />
-                                <circle cx="250" cy="120" r="12" class="station-pulse" />
-                                <text x="250" y="105" text-anchor="middle" class="map-text active-node">NODE ZERO (COWES)</text>
-                            </g>
-
-                            <g class="map-station" id="station-seaview">
-                                <circle cx="370" cy="200" r="6" />
-                                <circle cx="370" cy="200" r="12" class="station-pulse" />
-                                <text x="385" y="204" text-anchor="start" class="map-text">ISABELLA CAMPUS</text>
-                            </g>
-
-                            <g class="map-station" id="station-bembridge">
-                                <circle cx="300" cy="260" r="6" />
-                                <circle cx="300" cy="260" r="12" class="station-pulse" />
-                                <text x="315" y="264" text-anchor="start" class="map-text">BEMBRIDGE FORT</text>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="map-legend">
-                        <div class="legend-item"><span class="legend-dot active-loop"></span> Island P2P Fiber Ring (Active)</div>
-                        <div class="legend-item"><span class="legend-dot cloud-loop" id="cloud-legend-dot"></span> Cloud Internet Bridge (Connected)</div>
-                    </div>
-                </section>
-
-                <!-- DUAL/TRIPLE LENS TIMELINE -->
-                <section class="workspace-card timeline-section">
-                    <div class="card-header">
-                        <h2 class="title-font font-active"><span class="icon">📈</span> VECTISONE // DUAL-LENS ASCENT</h2>
-                        <div class="lens-status">LENS: <span id="current-lens-display" class="lens-indicator">APPRENTICE</span></div>
+                    <!-- TOWN COUNCIL MUNICIPAL NOTICE BANNER -->
+                    <div class="municipal-notice-banner">
+                        <div class="municipal-crest-block">
+                            <span class="icon">🏛️</span>
+                            <div class="crest-text">
+                                <span class="crest-authority">RYDE NEIGHBOURHOOD COUNCIL</span>
+                                <span class="crest-subtitle">OFFICIAL BRIEFING PORTAL // MUNICIPAL UTILITY COOPERATIVE</span>
+                            </div>
+                        </div>
+                        <div class="meeting-hud">
+                            <div class="meeting-badge status-active-pulse">SPECIAL BRIEFING</div>
+                            <div class="meeting-time">TONIGHT: 28 May 2026 at 19:00 BST</div>
+                        </div>
                     </div>
 
-                    <div class="shared-timeline">
-                                  <!-- STAGE 1: BASE -->
-                        <div class="timeline-node-card active" data-stage="1">
-                            <div class="node-badge">STAGE 01 // BASE</div>
-                            <div class="node-content">
-                                <!-- Apprentice & Creator view content -->
-                                <div class="lens-content apprentice-lens creator-lens">
-                                    <h3 class="title-font">Tokens as Atoms (From "Magic" to "Patterns")</h3>
-                                    <p>Demystify the "black box." You will learn that AI doesn’t "understand" English—it slices data into numerical fragments called <strong>tokens</strong>. You will learn to use pattern-prediction to feed mathematical patterns correctly, stopping "AI slop" and blind trust.</p>
-                                    <div style="background: rgba(0,0,0,0.1); border: 1px dashed var(--border-color); padding: 0.8rem; border-radius: 6px; margin-top: 0.8rem; font-size: 0.8rem;">
-                                        <strong>🔬 Local Sandbox:</strong> Type a sentence into our visual **Token Analyzer** and watch the Cowes local node slice it into color-coded probability chunks in real time.
+                    <!-- HERO SEGMENT -->
+                    <section class="workspace-card hero-card">
+                        <div class="hero-flex" style="display: flex; gap: 2rem; align-items: center;">
+                            <div style="flex: 1.2;">
+                                <span class="matrix-coordinate" style="font-size: 0.8rem;">MUNICIPAL SURVIVAL // ENGINEERING RESILIENCE</span>
+                                <h1 class="title-font" style="font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-top: 0.5rem; margin-bottom: 1rem; color: var(--text-main);">
+                                    Distributed Physical Systems & Infrastructure Program
+                                </h1>
+                                <p style="font-size: 1.05rem; margin-bottom: 1.5rem; color: var(--text-muted); line-height: 1.6;">
+                                    David, this is the apex of your strategic positioning. By shifting the argument from a "software coding academy" to a <strong>Distributed Physical Systems & Infrastructure Program</strong>, you have completely outmaneuvered every traditional technology consultant on the mainland [13]. You are addressing the most critical, un-talked-about bottleneck of the 2026 AI era: the physical reality of power, cooling, VRAM constraints, and spatial latency [4, 11].
+                                </p>
+                                <button class="action-btn" id="cta-go-control" style="background: var(--accent-active); color: #fff; border: none; padding: 0.8rem 1.6rem; border-radius: 6px; font-weight: 700; font-family: 'Outfit'; cursor: pointer; box-shadow: 0 4px 15px var(--accent-glow);">
+                                    📊 Access Sovereign Mission Control ➔
+                                </button>
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <img src="assets/heritage_vault.png" alt="Ryde Subterranean Bank Vault Server Refinery" class="card-asset" style="height: 220px; margin: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                                <span style="font-size: 0.65rem; color: var(--text-muted); text-align: center; font-style: italic;">Adaptive Reuse proposal: Former NatWest Bank Vault Subterranean Server Refinery</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- THE HERITAGE HACKS & THE HERITAGE BUILDING INTERSECTION -->
+                    <section class="workspace-card">
+                        <div class="card-header">
+                            <h2 class="title-font"><span class="icon">🔌</span> The Two Strategic "Heritage Hacks" to Add to Tonight's Pitch</h2>
+                            <span class="tech-tag tag-magenta">LISTED-BUILDING COMPATIBLE</span>
+                        </div>
+                        <p style="font-size: 0.95rem; margin: 1rem 0; color: var(--text-muted); line-height: 1.6;">
+                            To make your "Adaptive Reuse" of Ryde's historic buildings (like the former NatWest Bank or St Thomas's Church) completely bulletproof to local planning and conservation officers, you must introduce two specific engineering strategies:
+                        </p>
+
+                        <!-- CSS Visual representation of [THE HERITAGE BUILDING INTERSECTION] -->
+                        <div class="heritage-intersection-flow">
+                            <h4 class="title-font flow-title">THE HERITAGE BUILDING INTERSECTION</h4>
+                            <div class="flow-grid-container">
+                                <div class="flow-col">
+                                    <span class="flow-header">The Problem</span>
+                                    <div class="flow-node">
+                                        <span class="node-num">1</span>
+                                        <strong class="node-title">Heritage Planning</strong>
+                                        <p class="node-txt">Grade II listed planning battles block high-speed IT rollouts.</p>
                                     </div>
-                                    <div class="tag-row">
-                                        <span class="tech-tag tag-cyan">Demystifying AI</span>
-                                        <span class="tech-tag tag-magenta">Token Analyzer Sandbox</span>
+                                    <div class="flow-node">
+                                        <span class="node-num">2</span>
+                                        <strong class="node-title">Damp Subterranean</strong>
+                                        <p class="node-txt">60-100% relative humidity in vaults corrodes sensitive GPU nodes [20].</p>
                                     </div>
                                 </div>
-                                <!-- Committee View content -->
-                                <div class="lens-content committee-lens">
-                                    <h3 class="title-font">Avoided Costs & Immediate ROI</h3>
-                                    <p>Close Ryde’s 23% productivity gap. Replace standard security/labor overruns with local automated systems. Estimated annual operational savings: <strong>£175,000</strong>.</p>
-                                    <div class="tag-row">
-                                        <span class="tech-tag tag-amber">£175k/Yr Avoided Cost</span>
-                                        <span class="tech-tag tag-amber">Regulatory Protection</span>
+                                <div class="flow-divider-col">
+                                    <div class="flow-divider-arrow">──►</div>
+                                    <div class="flow-divider-arrow">──►</div>
+                                </div>
+                                <div class="flow-col">
+                                    <span class="flow-header">The Barrier</span>
+                                    <div class="flow-node barrier-node">
+                                        <strong class="node-title">No Cat6 Cabling Allowed</strong>
+                                        <p class="node-txt">Ripping open walls violates historic preservation.</p>
+                                    </div>
+                                    <div class="flow-node barrier-node">
+                                        <strong class="node-title">Silicon OOM & Corrosion</strong>
+                                        <p class="node-txt">Dampness causes early equipment failure.</p>
+                                    </div>
+                                </div>
+                                <div class="flow-divider-col">
+                                    <div class="flow-divider-arrow">──►</div>
+                                    <div class="flow-divider-arrow">──►</div>
+                                </div>
+                                <div class="flow-col">
+                                    <span class="flow-header">Vectis Engineering Solution</span>
+                                    <div class="flow-node solution-node">
+                                        <strong class="node-title">G.hn Powerline over Copper</strong>
+                                        <p class="node-txt">Sends gigabit data over existing historic electrical wires.</p>
+                                    </div>
+                                    <div class="flow-node solution-node">
+                                        <strong class="node-title">GPU sensible heat drying [20]</strong>
+                                        <p class="node-txt">GPU sensible heat naturally dehumidifies vault masonry.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- STAGE 2: MID -->
-                        <div class="timeline-node-card active" data-stage="2">
-                            <div class="node-badge">STAGE 02 // STRUCTURE</div>
-                            <div class="node-content">
-                                <!-- Apprentice & Creator View content -->
-                                <div class="lens-content apprentice-lens creator-lens">
-                                    <h3 class="title-font">Context Engineering (From "Asking" to "Providing")</h3>
-                                    <p style="margin-bottom: 0.8rem;">Avoid typical AI hallucinations. Learn the art of feeding secure, local context windows with highly specific, verified files rather than generic prompts.</p>
-                                    
-                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                                        <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(168,85,247,0.08);">
-                                            <strong style="color: var(--sector-text); font-size: 0.9rem;">📝 The Research Assistant</strong>
-                                            <p style="font-size: 0.75rem; margin-top: 0.4rem; color: var(--text-muted);"><strong>The Real Tool:</strong> Secure offline Llama-3/Mistral models on Node-0. Sift 500 pages of 1940s logs in seconds to extract exact facts without leakage.</p>
-                                        </div>
-                                        <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(0,255,102,0.08);">
-                                            <strong style="color: var(--sector-code); font-size: 0.9rem;">⚡ The Digital Builder</strong>
-                                            <img src="assets/smart_maintenance.png" class="card-asset" style="height: 80px;" alt="Smart Maritime Code Maintenance">
-                                            <p style="font-size: 0.75rem; color: var(--text-muted);"><strong>The Real Tool:</strong> Cursor & A2UI visual components. Build interactive maps of Ryde or local business schedulers using conversational English.</p>
-                                        </div>
-                                        <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(184,0,255,0.08);">
-                                            <strong style="color: var(--sector-media); font-size: 0.9rem;">🥽 The Storyteller</strong>
-                                            <img src="assets/historical_tourism.png" class="card-asset" style="height: 80px;" alt="Historical tourism interactive radar room">
-                                            <p style="font-size: 0.75rem; color: var(--text-muted);"><strong>The Real Tool:</strong> Stable Diffusion/Whisper. Restore old photos and transcribe heritage audio into immersive Bembridge Fort displays.</p>
-                                        </div>
-                                    </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.15); padding: 1.2rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
+                                <strong style="color: var(--accent-active); font-size: 1.05rem; display: block; margin-bottom: 0.5rem;">🔌 The G.hn Powerline Heritage Hack (Data Transmission)</strong>
+                                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-muted);">
+                                    Traditional IT setups require ripping open walls to run Cat6 ethernet cables, which triggers years of restrictive Grade II listed heritage planning battles. <strong>Your Solution:</strong> Vectis ONE utilizes G.hn Powerline technology to transmit gigabit-speed local data through the existing, historical copper electrical wiring already embedded in the walls. Zero structural disruption, zero planning friction.
+                                </p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.15); padding: 1.2rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.02);">
+                                <strong style="color: var(--accent-active); font-size: 1.05rem; display: block; margin-bottom: 0.5rem;">🔥 The Thermodynamic Symbiosis (Thermal/Moisture Control)</strong>
+                                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-muted);">
+                                    Dampness and relative humidity (60–100%) in subterranean spaces like the old NatWest vault pose a major risk of corrosion to sensitive GPU components [20]. <strong>Your Solution:</strong> High-density GPU servers possess a Sensible Heat Ratio (SHR) of approximately 1.0 [20]. By placing your local nodes in the vault, the sensible heat generated by the computing workload naturally raises the air temperature above the dew point of the surrounding masonry [20]. This acts as a highly efficient, low-cost dehumidification catalyst that preserves the historic structure's brickwork without requiring energy-intensive HVAC overhauls [20].
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- THE 3-STAGE PHYSICAL SYSTEMS ACADEMY SYLLABUS -->
+                    <section class="workspace-card">
+                        <div class="card-header">
+                            <h2 class="title-font"><span class="icon">🎓</span> The Physical Systems Academy Syllabus</h2>
+                            <span class="tech-tag tag-cyan">CONCRETE CURRICULUM</span>
+                        </div>
+                        <p style="font-size: 0.95rem; margin: 1rem 0; color: var(--text-muted); line-height: 1.6;">
+                            To prove you are not just running a "coding bootcamp," show them the exact three stages of your Physical Systems Engineering Program:
+                        </p>
+
+                        <!-- CSS visual representation of [THE THREE-STAGE PHYSICAL SYSTEMS SYLLABUS] -->
+                        <div class="syllabus-flow-container">
+                            <h4 class="title-font flow-title">THE THREE-STAGE PHYSICAL SYSTEMS SYLLABUS</h4>
+                            <div class="syllabus-flow-grid">
+                                <div class="syllabus-flow-node active-stage" style="flex: 1;">
+                                    <span class="stage-tag">STAGE 1</span>
+                                    <strong>VRAM & Hardware Calculus</strong>
+                                    <p>GPU constraints (HBM3e) & KV Cache sizing on physical silicon</p>
                                 </div>
-                                <!-- Committee View content -->
-                                <div class="lens-content committee-lens">
-                                    <h3 class="title-font">The Physics of No (A2UI Safety)</h3>
-                                    <p>By enforcing Google's A2UI specification, we isolate inputs. The system generates static JSON logs instead of executing rogue runtime code, achieving <strong>Safe by Design</strong> data layers.</p>
-                                    <div class="tag-row">
-                                        <span class="tech-tag tag-amber">Deterministic A2UI</span>
-                                        <span class="tech-tag tag-amber">HSE Fine Prophylactic</span>
-                                    </div>
+                                <div class="syllabus-flow-arrow">──►</div>
+                                <div class="syllabus-flow-node" style="flex: 1;">
+                                    <span class="stage-tag">STAGE 2</span>
+                                    <strong>PCIe Memory Offloading</strong>
+                                    <p>Hardware-software co-design & PCIe bus transfers</p>
+                                </div>
+                                <div class="syllabus-flow-arrow">──►</div>
+                                <div class="syllabus-flow-node" style="flex: 1;">
+                                    <span class="stage-tag">STAGE 3</span>
+                                    <strong>G.hn & Edge Topology</strong>
+                                    <p>High-frequency masonry networks & Local dark fiber</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- STAGE 3: PEAK -->
-                        <div class="timeline-node-card active" data-stage="3">
-                            <div class="node-badge">STAGE 03 // THE PEAK</div>
-                            <div class="node-content">
-                                <!-- Apprentice View content -->
-                                <div class="lens-content apprentice-lens">
-                                    <h3 class="title-font">Orchestrating Agents (From "Using" to "Managing")</h3>
-                                    <p style="margin-bottom: 0.8rem;">Move beyond standard chat interfaces. Learn to coordinate a multi-stage production pipeline using four specialized, collaborative local agents working in unison:</p>
-                                    <div style="background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); padding: 1rem; border-radius: 6px; margin-bottom: 0.8rem; font-size: 0.8rem;">
-                                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; color: var(--text-muted);">
-                                            <li>🔍 <strong>Agent A (The Researcher):</strong> Local scanner extracts precise, historical solent data.</li>
-                                            <li>✍️ <strong>Agent B (The Writer):</strong> Drafts script copies for audio heritage guides.</li>
-                                            <li>🛡️ <strong>Agent C (The Auditor):</strong> Reviews script facts against geographical maps.</li>
-                                            <li>💻 <strong>Agent D (The Developer):</strong> Packages the approved assets into interactive web maps.</li>
-                                        </ul>
-                                    <div class="agent-flowchart">
-                                        <div class="flow-step">
-                                            <span class="step-lbl">DATA SOURCE</span>
-                                            <span class="step-val">Solent Archives</span>
-                                        </div>
-                                        <div class="flow-arrow">➔</div>
-                                        <div class="flow-step">
-                                            <span class="step-lbl">AGENT A</span>
-                                            <span class="step-val">Researcher</span>
-                                        </div>
-                                        <div class="flow-arrow">➔</div>
-                                        <div class="flow-step">
-                                            <span class="step-lbl">AGENT B</span>
-                                            <span class="step-val">Writer</span>
-                                        </div>
-                                        <div class="flow-arrow">➔</div>
-                                        <div class="flow-step">
-                                            <span class="step-lbl">AGENT C</span>
-                                            <span class="step-val">Auditor</span>
-                                        </div>
-                                        <div class="flow-arrow">➔</div>
-                                        <div class="flow-step">
-                                            <span class="step-lbl">AGENT D</span>
-                                            <span class="step-val">Developer</span>
-                                        </div>
-                                        <div class="flow-arrow">➔</div>
-                                        <div class="flow-step highlight-step">
-                                            <span class="step-lbl">OUTPUT</span>
-                                            <span class="step-val">Live Deploy</span>
-                                        </div>
-                                    </div>
-                                    <div class="tag-row">
-                                        <span class="tech-tag tag-cyan">Agent Pipelines</span>
-                                        <span class="tech-tag tag-magenta">Micro-Agency Leverage</span>
-                                    </div>
-                                </div>
-                                <!-- Creator/Studio View content -->
-                                <div class="lens-content creator-lens">
-                                    <h3 class="title-font">The Community Foyer & Studio</h3>
-                                    
-                                    <div class="welcome-box" style="background: rgba(168,85,247,0.05); border-left: 4px solid var(--accent-active); padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
-                                        <p style="font-size: 0.95rem; color: var(--text-main);"><strong>🎨 Welcome! No coding experience needed.</strong> Grab a hot tea, sit down, and let's bring your ideas to life. If you can talk and tell a story, you can build with AI.</p>
-                                    </div>
-
-                                    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; margin-top: 1rem;">
-                                        <div>
-                                            <h4 style="margin-bottom: 0.5rem;"><span class="icon">✨</span> Collaborative Projects Running Today:</h4>
-                                            <ul style="list-style: none; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
-                                                <li>🔨 <strong>Jack:</strong> Rendering a 3D model of Appley Tower.</li>
-                                                <li>🎙️ <strong>Sarah:</strong> Editing an oral history audio track from Bembridge Fort.</li>
-                                                <li>☕ <strong>Pop-in:</strong> Foyer space is warm and open for drop-ins until 6:00 PM.</li>
-                                            </ul>
-                                            <h4 style="margin-top: 1rem; margin-bottom: 0.5rem;"><span class="icon">🤝</span> Taste & Truth:</h4>
-                                            <p style="font-size: 0.8rem; color: var(--text-muted);">You provide the local context and the design taste. We help teach you how to manage the algorithms so your outputs are authentic, rich, and free of "AI slop."</p>
-                                        </div>
-                                        <div>
-                                            <img src="assets/ryde_studio.png" class="card-asset" style="height: 100%; min-height: 180px; margin: 0;" alt="Warm creative Ryde studio space">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Committee View content -->
-                                <div class="lens-content committee-lens">
-                                    <h3 class="title-font">Asset-Based Value & Deep Social Capital</h3>
-                                    <p style="margin-bottom: 0.8rem;">Secure studio funding via Capacity/Programme Delivery tranches (£100k-£300k). Prove community value: <strong>£1 invested yields £3 in verified social capital and mental wellbeing</strong>.</p>
-                                    <img src="assets/integrity_seal.png" class="card-asset" style="height: 180px;" alt="Data Integrity Cryptographic Seal">
-                                </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.5rem;">
+                            <div style="background: rgba(0,0,0,0.1); padding: 1rem; border-radius: 6px; border-top: 3px solid var(--accent-active);">
+                                <h4 class="title-font" style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main);">1. Stage 1: VRAM & Hardware Calculus</h4>
+                                <p style="font-size: 0.8rem; line-height: 1.4; color: var(--text-muted);">
+                                    Students do not just write prompts; they calculate the exact physical memory footprint of the Key-Value (KV) Cache on physical GPU silicon to prevent hardware out-of-memory (OOM) crashes [4, 8].
+                                </p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.1); padding: 1rem; border-radius: 6px; border-top: 3px solid var(--accent-active);">
+                                <h4 class="title-font" style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main);">2. Stage 2: PCIe Memory Offloading</h4>
+                                <p style="font-size: 0.8rem; line-height: 1.4; color: var(--text-muted);">
+                                    Students master the physical mechanics of offloading memory caches between the local GPU and the host system RAM via the PCIe bus, understanding the physical bottlenecks of data transfer.
+                                </p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.1); padding: 1rem; border-radius: 6px; border-top: 3px solid var(--accent-active);">
+                                <h4 class="title-font" style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main);">3. Stage 3: G.hn & Edge Topology</h4>
+                                <p style="font-size: 0.8rem; line-height: 1.4; color: var(--text-muted);">
+                                    Students learn the practical configuration of high-frequency local networks through historical masonry and the deployment of decentralized, peer-to-peer local dark fiber connections (the "Mainland Bypass") [4].
+                                </p>
                             </div>
                         </div>
+                    </section>
 
-                    </div>
-                </section>
+                    <!-- MUNICIPAL INFRASTRUCTURE & CROWN VENUE PILOT -->
+                    <section class="workspace-card">
+                        <div class="card-header">
+                            <h2 class="title-font"><span class="icon">🏛️</span> Crown Smart Venue & Civic Resilience Hub Pilot</h2>
+                            <span class="tech-tag tag-amber committee-lens">PRIDE IN PLACE TRIPLE ROI</span>
+                            <span class="tech-tag tag-cyan apprentice-lens creator-lens">STATION ZERO</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-top: 1rem; font-size: 0.95rem;">
+                            <div>
+                                <p style="margin-bottom: 1rem; line-height: 1.6;">
+                                    We do not require massive new electrical grids or expensive cloud rental contracts. By taking empty local spaces—such as Ryde's vacant banks or Grade II churches—we commission physical **Resilience Hubs** serving local economic growth.
+                                </p>
+                                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; color: var(--text-muted); font-size: 0.9rem;">
+                                    <li>⚡ **Steward-Owned Infrastructure:** Island compute refinery remains local. It belongs strictly to the Island and cannot be divested or moved to the mainland.</li>
+                                    <li>🛰️ **Air-Gapped Operation:** Bypasses uninsurable cloud outages, ensuring real-time Solent maritime safety loops (<1.2ms) even in mainland power outages.</li>
+                                    <li>🏆 **Educational Integration:** Merges historical preservation with front-line physical systems calculus.</li>
+                                </ul>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); padding: 1.2rem; border-radius: 8px; display: flex; flex-direction: column; justify-content: center;">
+                                <span class="matrix-coordinate">[PITCH CLOSER METRIC]</span>
+                                <h3 style="font-family: 'Outfit'; margin: 0.5rem 0; font-size: 1.3rem;">Pride in Place Capital Tranche</h3>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                                    Targeting Programme Delivery (£232,000) or Capacity (£150,000) funding.
+                                </p>
+                                <strong style="color: var(--accent-active); font-size: 1.1rem;" class="text-glow">⚡ Every £1 invested yields £3 in verified social capital.</strong>
+                            </div>
+                        </div>
+                    </section>
 
-                <!-- VOCATIONAL CAREER OUTCOMES (Visible in Apprentice / Creator / Committee with appropriate lens text) -->
-                <section class="workspace-card outcomes-section">
-                    <div class="card-header">
-                        <h2 class="title-font font-active"><span class="icon">💼</span> SUSTAINABLE ISLAND CAREERS</h2>
-                        <span class="tech-tag tag-cyan apprentice-lens creator-lens" style="animation: fadeIn 0.4s ease forwards;">PORTFOLIO-BACKED PLACEMENT</span>
-                        <span class="tech-tag tag-amber committee-lens" style="animation: fadeIn 0.4s ease forwards;">LOCAL CAPITAL MULTIPLICATION</span>
-                    </div>
+                    <!-- STRATEGIC VERDICT: YOUR EDGE IS ABSOLUTE -->
+                    <section class="workspace-card edge-absolute-card">
+                        <div class="card-header">
+                            <h2 class="title-font" style="color: var(--accent-active);"><span class="icon">⚡</span> 3. Your Edge is Absolute</h2>
+                            <span class="tech-tag tag-cyan">STRATEGIC RESILIENCE</span>
+                        </div>
+                        <div style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.6;">
+                            <p style="margin-bottom: 1rem; color: var(--text-main); font-weight: 600;">
+                                David, you have completely bridged the gap between abstract software, physical thermodynamics, and regional public policy.
+                            </p>
+                            <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                                This is no longer a pitch about technology; it is a pitch about **municipal survival, engineering resilience, and public safety**.
+                            </p>
+                            <p style="color: var(--text-muted);">
+                                Walk into the Ryde Neighbourhood Council meeting tonight with this exact blueprint. You have the live Vercel hub on your iPad, you have the physical images of the courtyard, and you have the unassailable economic data of the "Sovereign Standard."
+                            </p>
+                            <div style="margin-top: 1.5rem; text-align: right; font-weight: 700; color: var(--accent-active); font-family: 'Outfit'; font-size: 1.15rem;" class="text-glow">
+                                The Island is ready. Go secure the future of Ryde. ⚡🏛️🤝🇬🇧🦾
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ==========================================================================
+                     TAB 2: SOVEREIGN MISSION CONTROL
+                     ========================================================================== -->
+                <div class="tab-viewport control-viewport">
                     
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                    <!-- SOVEREIGN DATA MAP & BIOSPHERE BLOCK (Committee view only) -->
+                    <section class="workspace-card biosphere-section committee-only">
+                        <div class="card-header">
+                            <h2 class="title-font font-active"><span class="icon">🌍</span> BIOSPHERE SOVEREIGNTY NETWORK</h2>
+                            <div class="map-controls">
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">MAINLAND BYPASS</span>
+                                <label class="switch-mini">
+                                    <input type="checkbox" id="mainland-bypass" checked>
+                                    <span class="slider-mini round"></span>
+                                </label>
+                            </div>
+                        </div>
                         
-                        <!-- Job Role A -->
-                        <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <span class="matrix-coordinate">[ROLE A // CREATIVE CONTENT]</span>
-                                <!-- Apprentice/Creator Lens -->
-                                <div class="lens-content apprentice-lens creator-lens">
-                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Digital Content & Accessibility Assistant</h3>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Use AI for Text and Media to draft accessible, optimized web copy, transcribe records, and manage public digital channels with safe human-in-the-loop compliance.</p>
-                                </div>
-                                <!-- Committee Lens -->
-                                <div class="lens-content committee-lens">
-                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Administrative Fee Avoidance</h3>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Transition costly external design and accessibility contracts to high-speed local apprentices. Keeps compliance checks 100% compliant with public standards.</p>
-                                </div>
-                            </div>
-                            <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
-                                <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£18,000 - £25,000 / Yr</strong>
-                                <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">Saves £30k+ per Dept</strong>
-                            </div>
+                        <div class="map-container">
+                            <svg viewBox="0 0 500 350" class="iow-map">
+                                <defs>
+                                    <pattern id="map-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#map-grid)" />
+                                
+                                <g class="mainland-node">
+                                    <circle cx="250" cy="40" r="8" class="pulse-node-cloud" />
+                                    <text x="250" y="25" text-anchor="middle" class="map-text">MAINLAND CLOUD</text>
+                                </g>
+
+                                <line x1="250" y1="40" x2="250" y2="120" class="fiber-line mainland-cable" id="mainland-link-line"/>
+                                <polygon points="120,200 250,110 380,200 310,270 190,270" class="island-outline" />
+                                <polygon points="250,120 370,200 300,260 200,260" class="fiber-line island-loop active" />
+
+                                <g class="map-station" id="station-cowes">
+                                    <circle cx="250" cy="120" r="6" />
+                                    <circle cx="250" cy="120" r="12" class="station-pulse" />
+                                    <text x="250" y="105" text-anchor="middle" class="map-text active-node">NODE ZERO (COWES)</text>
+                                </g>
+
+                                <g class="map-station" id="station-seaview">
+                                    <circle cx="370" cy="200" r="6" />
+                                    <circle cx="370" cy="200" r="12" class="station-pulse" />
+                                    <text x="385" y="204" text-anchor="start" class="map-text">ISABELLA CAMPUS</text>
+                                </g>
+
+                                <g class="map-station" id="station-bembridge">
+                                    <circle cx="300" cy="260" r="6" />
+                                    <circle cx="300" cy="260" r="12" class="station-pulse" />
+                                    <text x="315" y="264" text-anchor="start" class="map-text">BEMBRIDGE FORT</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="map-legend">
+                            <div class="legend-item"><span class="legend-dot active-loop"></span> Island P2P Fiber Ring (Active)</div>
+                            <div class="legend-item"><span class="legend-dot cloud-loop" id="cloud-legend-dot"></span> Cloud Internet Bridge (Connected)</div>
+                        </div>
+                    </section>
+
+                    <!-- THE 3-STAGE PHYSICAL SYSTEMS ACADEMY SYLLABUS -->
+                    <section class="workspace-card timeline-section">
+                        <div class="card-header">
+                            <h2 class="title-font font-active"><span class="icon">📈</span> PHYSICAL SYSTEMS ENGINEERING ACADEMY SYLLABUS</h2>
+                            <div class="lens-status">LENS: <span id="current-lens-display" class="lens-indicator">APPRENTICE</span></div>
                         </div>
 
-                        <!-- Job Role B -->
-                        <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <span class="matrix-coordinate">[ROLE B // MARKETING SEGMENT]</span>
-                                <!-- Apprentice/Creator Lens -->
-                                <div class="lens-content apprentice-lens creator-lens">
-                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Digital Marketing & Brand Assistant</h3>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Write engaging content, design campaign graphics, and update marketing layouts at 3x the speed using localized Llama and Stable Diffusion tools.</p>
-                                </div>
-                                <!-- Committee Lens -->
-                                <div class="lens-content committee-lens">
-                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">High-Productivity Local Apprentices</h3>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Direct alignment with WightFibre marketing placement tracks. Halves onboarding times and multiplies junior worker output by 300% via Node-0 workflows.</p>
+                        <div class="shared-timeline">
+                            
+                            <!-- STAGE 1: VRAM CALCULUS -->
+                            <div class="timeline-node-card active" data-stage="1">
+                                <div class="node-badge">STAGE 01 // VRAM</div>
+                                <div class="node-content">
+                                    <!-- Apprentice & Creator view content -->
+                                    <div class="lens-content apprentice-lens creator-lens">
+                                        <h3 class="title-font">VRAM & Hardware Calculus</h3>
+                                        <p>Learn structural hardware constraints. You will calculate the exact physical memory footprint of the Key-Value (KV) Cache on physical GPU silicon to prevent out-of-memory (OOM) server crashes.</p>
+                                        <div style="background: rgba(0,0,0,0.1); border: 1px dashed var(--border-color); padding: 0.8rem; border-radius: 6px; margin-top: 0.8rem; font-size: 0.8rem;">
+                                            <strong>🔬 Interactive Token Sandbox:</strong> Enter text to see how the local processing node slices words into color-coded probability tokens, calculating VRAM allocation in real time.
+                                        </div>
+                                    </div>
+                                    <!-- Committee View content -->
+                                    <div class="lens-content committee-lens">
+                                        <h3 class="title-font">Immediate Labor ROI & Avoided Overruns</h3>
+                                        <p>Deploying locally automated administrative systems closes the 23% productivity gap on-Island. Saves an estimated <strong>£175,000 annually</strong> in operational overruns.</p>
+                                        <div class="tag-row">
+                                            <span class="tech-tag tag-amber">£175k/Yr Avoided Cost</span>
+                                            <span class="tech-tag tag-amber">Hardware Capital Retention</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
-                                <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£17,500 - £24,000 / Yr</strong>
-                                <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">3x On-Island Work Output</strong>
+
+                            <!-- STAGE 2: MEMORY OFFLOADING -->
+                            <div class="timeline-node-card active" data-stage="2">
+                                <div class="node-badge">STAGE 02 // PCIe</div>
+                                <div class="node-content">
+                                    <!-- Apprentice & Creator View content -->
+                                    <div class="lens-content apprentice-lens creator-lens">
+                                        <h3 class="title-font">PCIe Memory Offloading (Tools of the Trade)</h3>
+                                        <p style="margin-bottom: 0.8rem;">Master the physical mechanics of offloading memory caches between local GPU nodes and host system RAM via high-bandwidth PCIe buses, bypassing cloud-dependent lag.</p>
+                                        
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                            <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(168,85,247,0.08);">
+                                                <strong style="color: var(--sector-text); font-size: 0.9rem;">📝 The Research Assistant</strong>
+                                                <p style="font-size: 0.75rem; margin-top: 0.4rem; color: var(--text-muted);"><strong>The Tool:</strong> Secure Llama-3/Mistral running locally at Node Zero. Rapidly query 500 pages of 1940s archives for historical preservation.</p>
+                                            </div>
+                                            <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(0,255,102,0.08);">
+                                                <strong style="color: var(--sector-code); font-size: 0.9rem;">⚡ The Digital Builder</strong>
+                                                <img src="assets/smart_maintenance.png" class="card-asset" style="height: 80px;" alt="Smart Maritime Code Maintenance">
+                                                <p style="font-size: 0.75rem; color: var(--text-muted);"><strong>The Tool:</strong> Cursor, v0 & pre-approved A2UI React component libraries. Build functional digital maps using conversational English.</p>
+                                            </div>
+                                            <div style="background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid rgba(184,0,255,0.08);">
+                                                <strong style="color: var(--sector-media); font-size: 0.9rem;">🥽 The Storyteller</strong>
+                                                <img src="assets/historical_tourism.png" class="card-asset" style="height: 80px;" alt="Historical tourism interactive radar room">
+                                                <p style="font-size: 0.75rem; color: var(--text-muted);"><strong>The Tool:</strong> Local Stable Diffusion/Three.js. Clean historical photos and design interactive museum guides.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Committee View content -->
+                                    <div class="lens-content committee-lens">
+                                        <h3 class="title-font">Google A2UI Deterministic Safety Gate</h3>
+                                        <p>The system maps natural language inputs directly to pre-verified JSON layout blocks. AI is physically blocked from generating rogue scripts, achieving <strong>Safe by Design</strong> legal standard protection.</p>
+                                        <div class="tag-row">
+                                            <span class="tech-tag tag-amber">A2UI Safety Gates</span>
+                                            <span class="tech-tag tag-amber">HSE Conviction Shield</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- STAGE 3: EDGE TOPOLOGY -->
+                            <div class="timeline-node-card active" data-stage="3">
+                                <div class="node-badge">STAGE 03 // EDGE</div>
+                                <div class="node-content">
+                                    <!-- Apprentice View content -->
+                                    <div class="lens-content apprentice-lens">
+                                        <h3 class="title-font">G.hn & Edge Topology (Managing Multi-Agents)</h3>
+                                        <p style="margin-bottom: 0.8rem;">Configure gigabit local networks through Grade II listed structures without drilling. Deconstruct complex workloads into cooperative local Agentic teams:</p>
+                                        <div class="agent-flowchart">
+                                            <div class="flow-step">
+                                                <span class="step-lbl">DATA INPUT</span>
+                                                <span class="step-val">Solent Archives</span>
+                                            </div>
+                                            <div class="flow-arrow">➔</div>
+                                            <div class="flow-step">
+                                                <span class="step-lbl">AGENT A</span>
+                                                <span class="step-val">Researcher</span>
+                                            </div>
+                                            <div class="flow-arrow">➔</div>
+                                            <div class="flow-step">
+                                                <span class="step-lbl">AGENT B</span>
+                                                <span class="step-val">Writer</span>
+                                            </div>
+                                            <div class="flow-arrow">➔</div>
+                                            <div class="flow-step">
+                                                <span class="step-lbl">AGENT C</span>
+                                                <span class="step-val">Auditor</span>
+                                            </div>
+                                            <div class="flow-arrow">➔</div>
+                                            <div class="flow-step">
+                                                <span class="step-lbl">AGENT D</span>
+                                                <span class="step-val">Developer</span>
+                                            </div>
+                                            <div class="flow-arrow">➔</div>
+                                            <div class="flow-step highlight-step">
+                                                <span class="step-lbl">OUTPUTS</span>
+                                                <span class="step-val">Secure Deploy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Creator/Studio View content -->
+                                    <div class="lens-content creator-lens">
+                                        <h3 class="title-font">The Community Foyer & Studio</h3>
+                                        <div class="welcome-box" style="background: rgba(168,85,247,0.05); border-left: 4px solid var(--accent-active); padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                                            <p style="font-size: 0.95rem; color: var(--text-main);"><strong>🎨 Welcome! No coding experience needed.</strong> Grab a hot tea, sit down, and let's bring your ideas to life. If you can talk and tell a story, you can build with AI.</p>
+                                        </div>
+                                        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                                            <div>
+                                                <h4 style="margin-bottom: 0.5rem;"><span class="icon">✨</span> Collaborative Projects Running Today:</h4>
+                                                <ul style="list-style: none; font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+                                                    <li>🔨 <strong>Jack:</strong> Rendering Appley Tower.</li>
+                                                    <li>🎙️ <strong>Sarah:</strong> Transcribing WWII radar records.</li>
+                                                    <li>☕ <strong>Pop-in:</strong> Foyer space is warm and open for drop-ins until 6:00 PM.</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <img src="assets/ryde_studio.png" class="card-asset" style="height: 100%; min-height: 180px; margin: 0;" alt="Warm creative Ryde studio space">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Committee View content -->
+                                    <div class="lens-content committee-lens">
+                                        <h3 class="title-font">Deep Social Capital & Steward-Ownership</h3>
+                                        <p style="margin-bottom: 0.8rem;">Every £1 invested yields £3 in verified social capital, enhancing mental well-being and local wealth. Governed by a **1% Veto Golden Share** to block sell-outs.</p>
+                                        <img src="assets/integrity_seal.png" class="card-asset" style="height: 180px;" alt="Data Integrity Cryptographic Seal">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- VOCATIONAL CAREER OUTCOMES -->
+                    <section class="workspace-card outcomes-section">
+                        <div class="card-header">
+                            <h2 class="title-font"><span class="icon">💼</span> SUSTAINABLE ISLAND CAREERS</h2>
+                            <span class="tech-tag tag-cyan apprentice-lens creator-lens">PORTFOLIO-BACKED PLACEMENT</span>
+                            <span class="tech-tag tag-amber committee-lens">LOCAL CAPITAL MULTIPLICATION</span>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                            
+                            <!-- Job Role A -->
+                            <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+                                <div>
+                                    <span class="matrix-coordinate">[ROLE A // CREATIVE CONTENT]</span>
+                                    <div class="lens-content apprentice-lens creator-lens">
+                                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Digital Content & Accessibility Assistant</h3>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Use AI for Text and Media to draft accessible, optimized web copy, transcribe records, and manage public digital channels with safe human-in-the-loop compliance.</p>
+                                    </div>
+                                    <div class="lens-content committee-lens">
+                                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Administrative Fee Avoidance</h3>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Transition costly external design and accessibility contracts to high-speed local apprentices. Keeps compliance checks 100% compliant with public standards.</p>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
+                                    <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£18,000 - £25,000 / Yr</strong>
+                                    <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">Saves £30k+ per Dept</strong>
+                                </div>
+                            </div>
+
+                            <!-- Job Role B -->
+                            <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+                                <div>
+                                    <span class="matrix-coordinate">[ROLE B // MARKETING SEGMENT]</span>
+                                    <div class="lens-content apprentice-lens creator-lens">
+                                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Digital Marketing & Brand Assistant</h3>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Write engaging content, design campaign graphics, and update marketing layouts at 3x the speed using localized Llama and Stable Diffusion tools.</p>
+                                    </div>
+                                    <div class="lens-content committee-lens">
+                                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">High-Productivity Local Apprentices</h3>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Direct alignment with WightFibre marketing placement tracks. Halves onboarding times and multiplies junior worker output by 300% via Node-0 workflows.</p>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
+                                    <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£17,500 - £24,000 / Yr</strong>
+                                    <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">3x On-Island Work Output</strong>
+                                </div>
+                            </div>
+
+                            <!-- Job Role C -->
+                            <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+                                <div>
+                                    <span class="matrix-coordinate">[ROLE C // LOCAL MICRO-AGENCY]</span>
+                                    <div class="lens-content apprentice-lens creator-lens">
+                                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Sovereign Local Agency Partner</h3>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Act as a local micro-agency to build web tools, interactive Solent maps, and booking portals for Bed & Breakfasts, charters, and heritage sites.</p>
+                                    </div>
+                                    <div class="lens-content committee-lens">
+                                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">On-Island Capital Retention</h3>
+                                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Eliminates standard capital drain to expensive mainland London design firms. Keeps cash flows circulating in Ryde, Cowes, and Bembridge.</p>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
+                                    <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£25,000 - £35,000+ / Yr</strong>
+                                    <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">0% Mainland Leakage</strong>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-style: italic; font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5;" class="committee-only">
+                            "Our curriculum is designed to support the <strong>Isle of Wight Education Strategy 2024 to 2030</strong>. We aren't teaching theory. In Stage 1, they learn how the engines work so they aren't fooled by them. In Stage 2, they use our local hardware to parse real local historical data, training them in the exact information-management skills that Island employers and the Council are looking for. And in Stage 3, they learn how to orchestrate these tools to build actual products—meaning they leave our studio not just with a certificate, but with a portfolio of live websites, restored media, and digital systems that local Island businesses actually need."
+                        </div>
+                    </section>
+
+                    <!-- THE PHYSICS OF NO: A2UI SECURITY SCHEMA (COMMITTEE VIEW ONLY) -->
+                    <section class="workspace-card security-section committee-only">
+                        <div class="card-header">
+                            <h2 class="title-font font-active"><span class="icon">🛡️</span> THE PHYSICS OF NO // A2UI ADJACENCY MATRIX</h2>
+                            <span class="security-status text-glow">SAFE BY DESIGN DETERMINISM</span>
+                        </div>
+                        <div class="adjacency-grid">
+                            <div class="adjacency-card">
+                                <span class="matrix-coordinate">[INPUT: USER INTENT]</span>
+                                <h4>Dynamic Natural Language</h4>
+                                <p class="matrix-desc">"Interrogate Bembridge Fort radar log for Aug 1940"</p>
+                            </div>
+                            <div class="adjacency-arrow">➔</div>
+                            <div class="adjacency-card highlight-border">
+                                <span class="matrix-coordinate">[GATE: A2UI PARSER]</span>
+                                <h4>Adjacency List Mapping</h4>
+                                <p class="matrix-desc">Bypasses code execution. Maps intent strictly to pre-approved JSON layout schemas.</p>
+                            </div>
+                            <div class="adjacency-arrow">➔</div>
+                            <div class="adjacency-card">
+                                <span class="matrix-coordinate">[OUTPUT: SECURE UI]</span>
+                                <h4>React Stage Assembly</h4>
+                                <p class="matrix-desc">Renders isolated visual components with zero security risks.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ==========================================================================
+                     TAB 3: TONIGHT'S COUNCIL PRESENTATION SCRIPT
+                     ========================================================================== -->
+                <div class="tab-viewport script-viewport">
+                    <section class="workspace-card teleprompter-card" style="padding: 2rem;">
+                        <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                            <h2 class="title-font" style="font-size: 1.4rem; color: var(--accent-active);"><span class="icon">🎙️</span> TONIGHT'S RYDE NEIGHBOURHOOD COUNCIL COMMAND SCRIPT</h2>
+                            <span class="tech-tag tag-cyan" style="font-size: 0.75rem;">HIGH-READABILITY TELEPROMPTER // IPAD READY</span>
                         </div>
 
-                        <!-- Job Role C -->
-                        <div style="background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <span class="matrix-coordinate">[ROLE C // LOCAL MICRO-AGENCY]</span>
-                                <!-- Apprentice/Creator Lens -->
-                                <div class="lens-content apprentice-lens creator-lens">
-                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">Sovereign Local Agency Partner</h3>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Act as a local micro-agency to build web tools, interactive Solent maps, and booking portals for Bed & Breakfasts, charters, and heritage sites.</p>
-                                </div>
-                                <!-- Committee Lens -->
-                                <div class="lens-content committee-lens">
-                                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Outfit';">On-Island Capital Retention</h3>
-                                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">Eliminates standard capital drain to expensive mainland London design firms. Keeps cash flows circulating in Ryde, Cowes, and Bembridge.</p>
-                                </div>
+                        <!-- Speech Steps -->
+                        <div class="prompter-timeline">
+                            
+                            <div class="prompter-step active-speech" data-step="1">
+                                <span class="prompter-coord">[STEP 01 // THE VACANCY]</span>
+                                <p class="speech-text">
+                                    "Councillors, the national conversation around AI is stuck in the cloud, but the reality of AI is a physical execution race of land, power, cooling, and localized compute [4, 11].<br><br>
+                                    The public sector is trapped in the 'bolt-on' software illusion [13]. We are warned by the ONS today of a 'lost generation' of young people locked out of the workforce because traditional entry-level roles have collapsed [11]."
+                                </p>
+                                <span class="speech-direction">💡 Point to the empty local bank reuse visual & explain how local Island institutions outsource junior tasks to mainland agencies due to a lack of local digital talent.</span>
                             </div>
-                            <div style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-size: 0.75rem; color: var(--text-muted);">OUTCOME</span>
-                                <strong class="text-glow apprentice-lens creator-lens" style="font-size: 0.95rem; color: var(--accent-active);">£25,000 - £35,000+ / Yr</strong>
-                                <strong class="text-glow committee-lens" style="font-size: 0.95rem; color: var(--accent-active);">0% Mainland Leakage</strong>
+
+                            <div class="prompter-step" data-step="2">
+                                <span class="prompter-coord">[STEP 02 // THE ACCELERATOR]</span>
+                                <p class="speech-text">
+                                    "We are proposing a physical, localist solution: The Ryde Sovereign AI Academy & Civic Trust [4, 11].<br><br>
+                                    We do not require new power grids, massive construction, or expensive US cloud contracts [4, 11]. By taking our empty local spaces—like the former NatWest Bank—and deploying local, quiet, liquid-cooled GPU nodes, we build an immediate, secure, and off-grid computing loop [4, 11].<br><br>
+                                    We use the 'Mainland Bypass' via WightFibre’s dark fiber ring [4]. All data generated by our local businesses and residents stays physically on the Island, processed on Island-owned hardware, under our own sovereign jurisdiction [4]."
+                                </p>
+                                <span class="speech-direction">💡 Flick the MAINLAND BYPASS switch in the map deck live to demonstrate the instant cloud isolation and 1.2ms Node Zero reflex loop.</span>
                             </div>
-                        </div>
 
-                    </div>
-                    
-                    <div style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; font-style: italic; font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5;" class="committee-only">
-                        "Our curriculum is designed to support the <strong>Isle of Wight Education Strategy 2024 to 2030</strong>. We aren't teaching theory. In Stage 1, they learn how the engines work so they aren't fooled by them. In Stage 2, they use our local hardware to parse real local historical data, training them in the exact information-management skills that Island employers and the Council are looking for. And in Stage 3, they learn how to orchestrate these tools to build actual products—meaning they leave our studio not just with a certificate, but with a portfolio of live websites, restored media, and digital systems that local Island businesses actually need."
-                    </div>
-                </section>
+                            <div class="prompter-step" data-step="3">
+                                <span class="prompter-coord">[STEP 03 // THE MULTIPLIER]</span>
+                                <p class="speech-text">
+                                    "More importantly, we are not training local youth to write basic, easily-automated code [11]. We are training them in the physical realities of the machine—how to manage VRAM, optimize direct liquid cooling, handle G.hn data transmission over Victorian copper, and orchestrate secure, audited agentic pipelines [4].<br><br>
+                                    By funding the Crown Smart Venue Pilot through our Pride in Place capital, we establish the first physical 'Resilience Hub' that proves this model works under live-fire conditions [4, 11]. We are shifting public spend from passive welfare to active, asset-backed local growth [11]. Let's make Ryde the first self-governing, AI-powered town in the UK." [4, 11, 13]
+                                </p>
+                                <span class="speech-direction">💡 Gesture to the Sustainable Careers outcomes panel to show how trainees leave with active portfolios directly meeting local bed & breakfast and WightFibre recruitment tracks, keeping 100% of the capital circulation on-island.</span>
+                            </div>
 
-                <!-- THE PHYSICS OF NO: A2UI SECURITY SCHEMA (COMMITTEE VIEW ONLY) -->
-                <section class="workspace-card security-section committee-only">
-                    <div class="card-header">
-                        <h2 class="title-font font-active"><span class="icon">🛡️</span> THE PHYSICS OF NO // A2UI ADJACENCY MATRIX</h2>
-                        <span class="security-status text-glow">SAFE BY DESIGN DETERMINISM</span>
-                    </div>
-                    <div class="adjacency-grid">
-                        <div class="adjacency-card">
-                            <span class="matrix-coordinate">[INPUT: USER INTENT]</span>
-                            <h4>Dynamic Natural Language</h4>
-                            <p class="matrix-desc">"Interrogate Bembridge Fort radar log for Aug 1940"</p>
                         </div>
-                        <div class="adjacency-arrow">➔</div>
-                        <div class="adjacency-card highlight-border">
-                            <span class="matrix-coordinate">[GATE: A2UI PARSER]</span>
-                            <h4>Adjacency List Mapping</h4>
-                            <p class="matrix-desc">Bypasses code execution. Maps intent strictly to pre-approved JSON layout schemas.</p>
-                        </div>
-                        <div class="adjacency-arrow">➔</div>
-                        <div class="adjacency-card">
-                            <span class="matrix-coordinate">[OUTPUT: SECURE UI]</span>
-                            <h4>React Stage Assembly</h4>
-                            <p class="matrix-desc">Renders isolated visual components with zero security risks.</p>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
 
             </main>
 
-            <!-- SIDEBARS SYSTEM (Swaps completely based on active Lens) -->
+            <!-- SIDEBARS SYSTEM (Dynamic display based on active Lens) -->
             
             <!-- SIDEBAR A: THE STUDIO WORKSPACE NOTEBOOK (Visible in Apprentice / Creator Lenses) -->
             <aside class="audit-sidebar studio-notebook-sidebar non-committee-only">
@@ -406,66 +666,66 @@
                         <span class="notary-dot" style="background: var(--accent-active); box-shadow: 0 0 8px var(--accent-active)"></span>
                         <span class="sidebar-title">MY STUDIO NOTEBOOK</span>
                     </div>
-                    <div class="notary-sub">TODAY'S CREATIVE MILESTONES</div>
+                    <div class="notary-sub">TODAY'S SYSTEM CHECKLISTS</div>
                 </div>
                 
                 <div class="notebook-content-area" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem;">
                     
                     <!-- Apprentice Specific Milestones -->
                     <div class="apprentice-only" style="animation: fadeIn 0.4s ease forwards;">
-                        <h4 style="margin-bottom: 0.8rem; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-main);">📚 MY LEARNING PATHWAY</h4>
+                        <h4 style="margin-bottom: 0.8rem; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-main);">📚 HARDWARE PATHWAY</h4>
                         <div class="checklist-item active-check">
                             <span class="check-icon">✓</span>
                             <div>
-                                <strong>Tokens as Atoms</strong>
-                                <p style="font-size: 0.75rem; color: var(--text-muted);">Learn how models see words as pattern fragments.</p>
+                                <strong>VRAM KV Cache Math</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Calculate silicon KV memory size footprints to prevent OOM errors.</p>
                             </div>
                         </div>
                         <div class="checklist-item">
                             <span class="check-icon">✓</span>
                             <div>
-                                <strong>Context Engineering</strong>
-                                <p style="font-size: 0.75rem; color: var(--text-muted);">Supply complete archives to million-token canvas windows.</p>
+                                <strong>PCIe Offload Control</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Manage high-speed host RAM offloading over local system buses.</p>
                             </div>
                         </div>
                         <div class="checklist-item pending">
                             <span class="check-icon">○</span>
                             <div>
-                                <strong>Orchestrating Agents</strong>
-                                <p style="font-size: 0.75rem; color: var(--text-muted);">Manage your team of digital junior teammates.</p>
+                                <strong>G.hn Network Install</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Deploy local dark fiber edge nodes over Victorian copper loops.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Creator Specific Workspace Tasks -->
                     <div class="creator-only" style="animation: fadeIn 0.4s ease forwards;">
-                        <h4 style="margin-bottom: 0.8rem; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-main);">🎨 TODAY'S CREATIVE CHECKLIST</h4>
+                        <h4 style="margin-bottom: 0.8rem; font-size: 0.85rem; letter-spacing: 0.5px; color: var(--text-main);">🎨 CREATIVE PROJECTS RUNNING</h4>
                         <div class="checklist-item active-check">
                             <span class="check-icon">✓</span>
                             <div>
-                                <strong>Appley Tower Project</strong>
-                                <p style="font-size: 0.75rem; color: var(--text-muted);">Pick up physical research archives & Solent historical map frames.</p>
+                                <strong>NatWest Vault Symbiosis</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Place GPU nodes in the old vault; sensible heat naturally dehumidifies vault masonry.</p>
                             </div>
                         </div>
                         <div class="checklist-item pending">
                             <span class="check-icon">○</span>
                             <div>
-                                <strong>Fort Oral History Edit</strong>
-                                <p style="font-size: 0.75rem; color: var(--text-muted);">Record/edit the sound track with veterans in the sound booth.</p>
+                                <strong>Appley Tower 3D model</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Render historic structures using local Stable Diffusion & Three.js pipelines.</p>
                             </div>
                         </div>
                         <div class="checklist-item pending">
                             <span class="check-icon">○</span>
                             <div>
-                                <strong>Interactive Tourism Map</strong>
-                                <p style="font-size: 0.75rem; color: var(--text-muted);">Upload regional assets and verify that no "AI slop" generates.</p>
+                                <strong>Bembridge Oral History</strong>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Ingest military archives and check against "AI slop" via human taste sign-off.</p>
                             </div>
                         </div>
                     </div>
 
                     <div style="background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.08); border-radius: 6px; padding: 1rem; margin-top: 1rem;">
-                        <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.3rem;">💡 Creator Workspace Tip</span>
-                        <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">Click any stage card on the timeline to log your current milestone or access active design tools.</p>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.3rem;">💡 Presenter Instruction</span>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">Click any timeline stage node during your pitch to automatically check off achievements in your active dashboard panel!</p>
                     </div>
                 </div>
             </aside>
@@ -493,13 +753,13 @@
                 <div class="audit-log-container" id="audit-log-stream">
                     <!-- Initial seed logs with BOTH Tech and ELI5 English classes -->
                     <div class="log-item">
-                        <span class="log-time">[20:44:12]</span>
+                        <span class="log-time">[16:47:20]</span>
                         <span class="log-tech text-cyan">SYSTEM INITIALIZED</span>
                         <span class="log-warm" style="color: #00F0FF;">System Online: Welcome to VectisONE AI Academy!</span>
                         <span class="log-hash">SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
                     </div>
                     <div class="log-item">
-                        <span class="log-time">[20:44:13]</span>
+                        <span class="log-time">[16:47:21]</span>
                         <span class="log-tech">STATION_COWES: ONLINE // REFreflex_loop: 1.2ms</span>
                         <span class="log-warm">Cowes Node Live: Local processing engine online.</span>
                         <span class="log-hash">SHA256: 4fc3d32ef39d89bb90f772418e285d8efcd63668a442ff09a341f23789abdc02</span>

@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const auditLogStream = document.getElementById('audit-log-stream');
     const hitlSignoff = document.getElementById('hitl-signoff');
     const timelineCards = document.querySelectorAll('.timeline-node-card');
+    const syllabusFlowNodes = document.querySelectorAll('.syllabus-flow-node');
+    
+    // SPA Tab Elements
+    const tabButtons = document.querySelectorAll('.nav-tab');
+    const ctaGoControl = document.getElementById('cta-go-control');
+    
+    // Teleprompter Steps
+    const prompterSteps = document.querySelectorAll('.prompter-step');
     
     // Lens Selector controls
     const lensSelects = document.querySelectorAll('input[name="lens-select"]');
@@ -133,7 +141,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     startPingSimulation(false); // Initial cloud state connected
 
-    // Central Switch function
+    // ==========================================================================
+    // SPA TAB NAVIGATION LOGIC
+    // ==========================================================================
+    function switchTab(tabId) {
+        console.log(`Switching workspace view tab to: ${tabId}`);
+        
+        // Update body active tab class
+        body.classList.remove('active-tab-civic', 'active-tab-control', 'active-tab-script');
+        body.classList.add(`active-tab-${tabId}`);
+        
+        // Sync nav button active classes
+        tabButtons.forEach(btn => {
+            if (btn.getAttribute('data-tab') === tabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Log telemetry receipt
+        logForensicReceipt(`NAV_SHIFT: Loaded [${tabId.toUpperCase()}] viewport`, 'ACTION');
+    }
+    
+    // Attach click listeners to nav tab buttons
+    if (tabButtons.length > 0) {
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+    }
+    
+    // CTA Button "Access Sovereign Mission Control" click logic
+    if (ctaGoControl) {
+        ctaGoControl.addEventListener('click', () => {
+            switchTab('control');
+        });
+    }
+
+    // ==========================================================================
+    // TELEPROMPTER SPEECH HIGHLIGHT SYSTEM
+    // ==========================================================================
+    if (prompterSteps.length > 0) {
+        prompterSteps.forEach(step => {
+            step.addEventListener('click', () => {
+                const stepNum = step.getAttribute('data-step');
+                
+                // Clear active from all other steps
+                prompterSteps.forEach(s => s.classList.remove('active-speech'));
+                
+                // Set active to clicked step
+                step.classList.add('active-speech');
+                
+                // Log forensic trace
+                logForensicReceipt(`PRESENTER_LOG: Teleprompter focused on Step 0${stepNum}`, 'INFO');
+            });
+        });
+    }
+
+    // Central Lens Switch function
     function applyLensShift(selectedLens) {
         console.log(`Executing Lens Shift: ${selectedLens}`);
         
@@ -276,6 +344,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     const checkIcon = item.querySelector('.check-icon');
                     if (checkIcon) checkIcon.textContent = '✓';
                 }
+                
+                // Visual card click flash
+                card.style.borderColor = 'var(--accent-active)';
+                setTimeout(() => {
+                    card.style.borderColor = 'rgba(255, 255, 255, 0.03)';
+                }, 300);
+            });
+        });
+    }
+    
+    // Syllabus Flow Node clicks (Tab 1 Homepage) trigger checklist updates in notebooks
+    if (syllabusFlowNodes.length > 0) {
+        syllabusFlowNodes.forEach((card, idx) => {
+            card.addEventListener('click', () => {
+                const stage = idx + 1;
+                const activeRadio = document.querySelector('input[name="lens-select"]:checked');
+                const activeLens = activeRadio ? activeRadio.value : 'apprentice';
+                
+                const title = card.querySelector('strong') ? card.querySelector('strong').textContent : `Stage ${stage}`;
+                
+                // 1. Log forensic event
+                logForensicReceipt(`USER ACTION Stage 0${stage}: "${title}" accessed from Town Council Portal`, 'INFO');
+                
+                // 2. Interactive Checklist Checkoff!
+                let targetChecklist;
+                if (activeLens === 'apprentice') {
+                    targetChecklist = document.querySelectorAll('.apprentice-only .checklist-item');
+                } else if (activeLens === 'creator') {
+                    targetChecklist = document.querySelectorAll('.creator-only .checklist-item');
+                }
+                
+                if (targetChecklist && targetChecklist[stage - 1]) {
+                    const item = targetChecklist[stage - 1];
+                    item.classList.add('active-check');
+                    item.classList.remove('pending');
+                    const checkIcon = item.querySelector('.check-icon');
+                    if (checkIcon) checkIcon.textContent = '✓';
+                }
+                
+                // Add active-stage style to clicked node and remove from others
+                syllabusFlowNodes.forEach(node => node.classList.remove('active-stage'));
+                card.classList.add('active-stage');
                 
                 // Visual card click flash
                 card.style.borderColor = 'var(--accent-active)';
